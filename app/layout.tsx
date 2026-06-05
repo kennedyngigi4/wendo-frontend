@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Wendo Health",
     images: [
       {
-        url: "/social.png",
+        url: "https://wendo.health/social.png",
         width: 1200,
         height: 630,
         alt: "Wendo Health",
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Wendo Health",
+    title: "Wendo Health - Connecting You to Trusted Healthcare.",
     description: "Wendo is a digital healthcare platform connecting people to trusted health information, hospitals, clinics, specialists, podcasts, and wellness resources through an interactive learning hub designed to make healthcare simple, accessible, and informed.",
-    images: ["/social.png"],
+    images: ["https://wendo.health/social.png"],
   },
 
 };
