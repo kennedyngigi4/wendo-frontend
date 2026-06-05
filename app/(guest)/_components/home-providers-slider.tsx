@@ -63,7 +63,7 @@ const HomeProvidersSlider = ({ providers }: HomeProvidersSliderProps) => {
                     }}
                     className="z-0"
                 >
-                {providers?.map((provider: ProviderBranchList) => (
+                {providers?.map((provider: ProviderBranchCard) => (
                     <SwiperSlide key={provider.id}>
                         <ProviderComponentCard provider={provider} />
                     </SwiperSlide>
