@@ -21,9 +21,6 @@ export default function Sliders() {
                 slidesPerView={1}
                 spaceBetween={0}
                 pagination={{ clickable: true }}
-                style={{
-                    "--swiper-pagination-color": "#FF0000",
-                }}
                 autoplay={{ delay: 3000, disableOnInteraction: false }}
                 rewind
                 speed={1200}
