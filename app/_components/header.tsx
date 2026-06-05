@@ -222,8 +222,8 @@ const MainHeader = () => {
                         onClick={() => setMobileMenuOpen(false)}
                     >
                         <Image
-                            src="/afyhub-logo.png"
-                            alt="AFYHUB AFRICA"
+                            src="/wendo-logo.png"
+                            alt="WENDO HEALTH"
                             width={75}
                             height={75}
                         />
