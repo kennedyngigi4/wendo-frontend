@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import ClientClinicsPage from './page-client';
 import { ApiRequests } from '@/lib/requests/api-requests';
 
@@ -9,7 +9,9 @@ const page = async() => {
 
   return (
     <div>
-      <ClientClinicsPage clinicsData={data} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ClientClinicsPage clinicsData={data} />
+      </Suspense>
     </div>
   )
 }
