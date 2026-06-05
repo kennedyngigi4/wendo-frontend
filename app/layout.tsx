@@ -18,6 +18,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+
+  metadataBase: new URL("https://wendohealth.com"),
+
   title: "Wendo Health - Connecting You to Trusted Healthcare",
   description: "Wendo is a digital healthcare platform connecting people to trusted health information, hospitals, clinics, specialists, podcasts, and wellness resources through an interactive learning hub designed to make healthcare simple, accessible, and informed.",
 
@@ -32,7 +35,7 @@ export const metadata: Metadata = {
     siteName: "Wendo Health",
     images: [
       {
-        url: "https://wendo.health/social.png",
+        url: "/social.png",
         width: 1200,
         height: 630,
         alt: "Wendo Health",
@@ -46,7 +49,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Wendo Health - Connecting You to Trusted Healthcare.",
     description: "Wendo is a digital healthcare platform connecting people to trusted health information, hospitals, clinics, specialists, podcasts, and wellness resources through an interactive learning hub designed to make healthcare simple, accessible, and informed.",
-    images: ["https://wendo.health/social.png"],
+    images: ["/social.png"],
   },
 
 };
