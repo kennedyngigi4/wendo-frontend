@@ -27,7 +27,7 @@ export const metadata: Metadata = {
 
   openGraph: {
     title: "Wendo Health - Connecting You to Trusted Healthcare.",
-    description: "Trusted healthcare information, hospitals, specialists, podcasts, and wellness resources all in one platform.",
+    description: "Wendo is a digital healthcare platform connecting people to trusted health information, hospitals, clinics, specialists, podcasts, and wellness resources through an interactive learning hub designed to make healthcare simple, accessible, and informed.",
     url: "https://wendohealth.com",
     siteName: "Wendo Health",
     images: [
@@ -45,8 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Wendo Health",
-    description:
-      "Connecting You to Trusted Healthcare.",
+    description: "Wendo is a digital healthcare platform connecting people to trusted health information, hospitals, clinics, specialists, podcasts, and wellness resources through an interactive learning hub designed to make healthcare simple, accessible, and informed.",
     images: ["/social.png"],
   },
 
