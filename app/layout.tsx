@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     siteName: "Wendo Health",
     images: [
       {
-        url: "/welcome-social.png",
+        url: "/social.png",
         width: 1200,
         height: 630,
         alt: "Wendo Health",
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     title: "Wendo Health",
     description:
       "Connecting You to Trusted Healthcare.",
-    images: ["/welcome-social.png"],
+    images: ["/social.png"],
   },
 
 };
