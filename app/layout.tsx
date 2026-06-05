@@ -20,6 +20,36 @@ const montserrat = Montserrat({
 export const metadata: Metadata = {
   title: "Wendo Health - Connecting You to Trusted Healthcare",
   description: "Wendo is a digital healthcare platform connecting people to trusted health information, hospitals, clinics, specialists, podcasts, and wellness resources through an interactive learning hub designed to make healthcare simple, accessible, and informed.",
+
+  icons: {
+    icon: "/favicon.png",
+  },
+
+  openGraph: {
+    title: "Wendo Health - Connecting You to Trusted Healthcare.",
+    description: "Trusted healthcare information, hospitals, specialists, podcasts, and wellness resources all in one platform.",
+    url: "https://wendohealth.com",
+    siteName: "Wendo Health",
+    images: [
+      {
+        url: "/welcome-social.png",
+        width: 1200,
+        height: 630,
+        alt: "Wendo Health",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Wendo Health",
+    description:
+      "Connecting You to Trusted Healthcare.",
+    images: ["/welcome-social.png"],
+  },
+
 };
 
 export default function RootLayout({

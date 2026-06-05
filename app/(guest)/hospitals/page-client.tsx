@@ -50,11 +50,11 @@ const HospitalsClient = ({ hospitalsData }: HospitalsClientProps) => {
               {hospitals.length === 0 ? (
                 <div className="border bg-blue-50 rounded-2xl p-10 text-center">
                   <h2 className="text-xl font-semibold">
-                    No listed clinics
+                    No listed hospitals
                   </h2>
 
                   <p className="text-muted-foreground mt-2">
-                    No clinics match your current filters.
+                    No hospitals match your current filters.
                   </p>
                 </div>
               ) : (
