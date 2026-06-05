@@ -9,7 +9,7 @@ const page = async() => {
   return (
     <div className="app-container my-12">
       <Suspense fallback={<div>Loading ....</div>}>
-        <BlogsClientPage blogs={data ||} />
+        <BlogsClientPage blogs={data} />
       </Suspense>
     </div>
   )
