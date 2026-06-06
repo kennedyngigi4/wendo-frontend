@@ -10,21 +10,102 @@ import { FacebookIcon, InstagramIcon, LinkedinIcon, MailIcon, PhoneCallIcon, You
 const MainFooter = () => {
   return (
     <footer className="">
-        <div className="bg-blue-50 py-8">
+        <div className="bg-gradient-to-b from-blue-50 to-white py-14">
             <div className="app-container">
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-5">
-                    <div className="md:col-span-3">
-                        <h1 className="text-secondary font-semibold">Our Podcast</h1>
-                    </div>
-                    <div className="md:col-span-6">
-                        <h1 className="text-secondary font-semibold">Subscribe to Our Newsletter</h1>
-                    </div>
-                    <div className="md:col-span-3">
-                        <h1 className="text-secondary font-semibold">Download Free App</h1>
-                    </div>
+                <div className="text-center max-w-2xl mx-auto mb-10">
+                    <h1 className="text-3xl font-bold text-secondary">
+                        Stay Connected With Wendo
+                    </h1>
+
+                    <p className="text-muted-foreground mt-3">
+                        Join our growing health community through podcasts, daily wellness
+                        updates, and tools that help you stay informed and healthier every day.
+                    </p>
                 </div>
-            </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                    {/* Podcast */}
+                    <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300">
+                        <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center mb-5">
+                            🎙️
+                        </div>
+
+                        <h2 className="text-lg font-semibold text-secondary">
+                            Our Podcast
+                        </h2>
+
+                        <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+                            Listen to conversations with doctors, wellness experts, and inspiring
+                            stories that help you live healthier every day.
+                        </p>
+
+                        <Link href="/health-learning-hub">
+                            <button className="mt-5 text-sm font-medium text-primary hover:underline">
+                                Listen Now →
+                            </button>
+                        </Link>
+                       
+                    </div>
+
+                    {/* Newsletter */}
+                    <div className="bg-primary rounded-3xl p-6 text-white shadow-sm hover:shadow-xl transition-all duration-300">
+                        <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-5">
+                            📩
+                        </div>
+
+                        <h2 className="text-lg font-semibold">
+                            Daily Health Newsletter
+                        </h2>
+
+                        <p className="text-sm text-white/80 mt-3 leading-relaxed">
+                            Get simple health tips, awareness reminders, wellness insights, and
+                            updates delivered directly to your inbox.
+                        </p>
+
+                        <div className="mt-5 flex gap-2">
+                            <input
+                                type="email"
+                                placeholder="Enter your email"
+                                className="w-full bg-gray-200 rounded-xl px-4 py-3 text-sm text-secondary outline-none"
+                            />
+
+                            <button className="bg-white text-primary px-4 rounded-xl text-sm font-medium hover:bg-slate-100">
+                                Join
+                            </button>
+                        </div>
+                    </div>
+
+                      {/* App */}
+                      <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300">
+                          <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center mb-5">
+                              📱
+                          </div>
+
+                          <h2 className="text-lg font-semibold text-secondary">
+                              Download Our App
+                          </h2>
+
+                          <p className="text-sm text-muted-foreground mt-3 leading-relaxed">
+                              Access healthcare tools, providers, reminders, and wellness support
+                              from anywhere using the Wendo mobile app.
+                          </p>
+
+                          <div className="flex gap-3 mt-5">
+                              <button className="bg-secondary text-white px-4 py-2 rounded-xl text-sm">
+                                  App Store
+                              </button>
+
+                              <button className="bg-secondary text-white px-4 py-2 rounded-xl text-sm">
+                                  Google Play
+                              </button>
+                          </div>
+                      </div>
+
+                  </div>
+              </div>
         </div>
+
+        {/* BOTTOM FOOTER */}
         <div className="bg-primary text-white">
             <div className="app-container grid md:grid-cols-12 grid-cols-12 gap-8 py-8">
                 <div className="col-span-12 md:col-span-5">
