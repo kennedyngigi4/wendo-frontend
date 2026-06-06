@@ -48,7 +48,7 @@ export default function Partnerships() {
   return (
     <div className="bg-white">
       {/* Hero */}
-      <section className="bg-gradient-to-b from-blue-50 to-white py-20">
+      <section className="py-20">
         <div className="app-container text-center max-w-4xl mx-auto">
           <Handshake className="mx-auto h-16 w-16 text-secondary mb-6" />
 
