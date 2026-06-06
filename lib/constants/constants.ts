@@ -120,6 +120,45 @@ export const CONSTANTS = {
         }
     ],
 
+    patientServices: [
+        {
+            id: 1,
+            title: "Find Healthcare Providers",
+            subtitle: "Discover trusted doctors, clinics, hospitals, and specialists near you.",
+            icon: "",
+        },
+        {
+            id: 2,
+            title: "Book Appointments",
+            subtitle: "Schedule healthcare visits quickly and conveniently online.",
+            icon: "",
+        },
+        {
+            id: 3,
+            title: "Teleconsultation",
+            subtitle: "Connect with healthcare professionals from the comfort of your home.",
+            icon: "",
+        },
+        {
+            id: 4,
+            title: "Compare Providers",
+            subtitle: "View profiles, services, locations, and patient information to make informed choices.",
+            icon: "",
+        },
+        {
+            id: 5,
+            title: "Health Information & Resources",
+            subtitle: "Access reliable health tips, articles, podcasts, and educational content.",
+            icon: "",
+        },
+        {
+            id: 6,
+            title: "Personalized Care Navigation",
+            subtitle: "Get guidance to the right healthcare services and specialists.",
+            icon: "",
+        }
+    ],
+
 
     impacts: [
         {

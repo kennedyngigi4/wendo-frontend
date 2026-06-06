@@ -5,6 +5,7 @@ import BreadcrumbsPage from '@/app/_components/breadcrumbs';
 import { motion } from 'framer-motion';
 import { CONSTANTS } from '@/lib/constants/constants';
 import Image from 'next/image';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 const page = () => {
   return (
@@ -114,22 +115,90 @@ const page = () => {
 
 
 
-        <div id="services" className="bg-gradient-to-br from-blue-50 to-blue-50 py-10">
-            <div className="app-container flex flex-col space-y-5 pb-5">
-                <h1 className="text-secondary text-center font-bold text-2xl">Our Services</h1>
+        <div
+              id="services"
+              className="py-16 bg-gradient-to-b from-blue-50 to-blue-50"
+        >
+            <div className="app-container">
+                  {/* Header */}
+                  <div className="text-center max-w-3xl mx-auto mb-12">
+                      <h2 className="text-4xl font-bold text-secondary">
+                          Our Services
+                      </h2>
 
-                <div>
+                      <p className="mt-4 text-slate-600 text-lg">
+                          Wendo connects patients with quality healthcare services while
+                          helping healthcare providers grow their digital presence and
+                          reach more people.
+                      </p>
+                  </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                        {CONSTANTS.services.map((service) => (
-                            <div key={service.id} className="bg-white p-6 rounded-lg shadow hover:shadow-lg flex flex-col items-center hover:cursor-pointer">
-                                <h1 className="font-semibold text-secondary">{service.title}</h1>
-                                <p className="text-sm text-slate-600 pt-2 text-center">{service.subtitle}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+                  <Tabs defaultValue="patients" className="w-full">
+                      {/* Tabs */}
+                      <div className="flex justify-center mb-10">
+                          <TabsList className="grid w-full max-w-md grid-cols-2 rounded-full p-1 bg-white shadow-md border">
+                            <TabsTrigger value="patients" className="rounded-full font-medium data-[state=active]:bg-secondary  data-[state=active]:text-white">
+                                Patients
+                            </TabsTrigger>
+
+                            <TabsTrigger value="providers" className="rounded-full font-medium data-[state=active]:bg-secondary data-[state=active]:text-white">
+                                  Providers
+                            </TabsTrigger>
+                          </TabsList>
+                      </div>
+
+                      {/* Patients */}
+                      <TabsContent value="patients">
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                              {CONSTANTS.patientServices.map((service) => (
+                                <div key={service.id}
+                                      className="group bg-white   rounded-2xl  p-6 border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 text-center"
+                                  >
+                                      <h3 className="text-lg font-semibold text-secondary mb-3">
+                                          {service.title}
+                                      </h3>
+
+                                      <p className="text-slate-600 text-sm leading-relaxed">
+                                          {service.subtitle}
+                                      </p>
+                                  </div>
+                              ))}
+                          </div>
+                      </TabsContent>
+
+                      {/* Providers */}
+                      <TabsContent value="providers">
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                              {CONSTANTS.services.map((service) => (
+                                  <div
+                                      key={service.id}
+                                      className="
+                group
+                bg-white
+                rounded-2xl
+                p-6
+                border border-slate-100
+                shadow-sm
+                hover:shadow-xl
+                hover:-translate-y-1
+                transition-all
+                duration-300
+                text-center
+              "
+                                  >
+                                      <h3 className="text-lg font-semibold text-secondary mb-3">
+                                          {service.title}
+                                      </h3>
+
+                                      <p className="text-slate-600 text-sm leading-relaxed">
+                                          {service.subtitle}
+                                      </p>
+                                  </div>
+                              ))}
+                          </div>
+                      </TabsContent>
+                  </Tabs>
+              </div>
         </div>
 
 
