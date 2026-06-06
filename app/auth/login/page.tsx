@@ -72,7 +72,7 @@ const LoginPage = () => {
               <FieldSet>
                 <div>
                   <h1 className="text-2xl text-secondary font-bold">Login</h1>
-                  <p className="text-sm text-slate-500">Welcome back to <span className="font-bold text-primary">Wendo Health</span></p>
+                  <p className="text-sm text-slate-500">Welcome back. Sign in to manage your healthcare experience.</p>
                 </div>
 
                 <FieldGroup>

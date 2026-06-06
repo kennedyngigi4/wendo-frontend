@@ -7,7 +7,7 @@ const ContactUsPage = () => {
         <div className="bg-white">
 
             {/* Hero Section */}
-            <section className="bg-gradient-to-b from-blue-50 to-white py-20">
+            <section className="py-20">
                 <div className="app-container text-center max-w-3xl mx-auto">
                     <h1 className="text-4xl md:text-5xl font-bold text-secondary">
                         Contact Wendo

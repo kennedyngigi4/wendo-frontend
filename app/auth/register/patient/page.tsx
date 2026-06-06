@@ -64,7 +64,7 @@ const PatientRegisterPage = () => {
               <FieldSet>
                 <div>
                   <h1 className="text-2xl text-secondary font-bold">Patient Registration</h1>
-                  <p className="text-sm text-slate-500">Welcome back to <span className="font-bold text-primary">Wendo Health</span></p>
+                  <p className="text-sm text-slate-500">Sign up to book appointments, track your care, and stay connected with providers.</p>
                 </div>
 
                 <FieldGroup>

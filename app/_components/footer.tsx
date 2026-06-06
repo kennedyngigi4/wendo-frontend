@@ -66,7 +66,7 @@ const MainFooter = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="w-full bg-gray-200 rounded-xl px-4 py-3 text-sm text-secondary outline-none"
+                                className="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-secondary outline-none"
                             />
 
                             <button className="bg-white text-primary px-4 rounded-xl text-sm font-medium hover:bg-slate-100">
@@ -113,10 +113,10 @@ const MainFooter = () => {
                     <p className="pt-4 text-sm leading-6">To become Africa’s leading healthcare discovery and engagement platform, transforming how people access healthcare services through innovation, trust, and community impact.</p>
                 
                     <div className="pt-10 flex space-x-4">
-                        <Link href="">
+                        <Link href="https://www.facebook.com/wendo.health/">
                             <FacebookIcon />
                         </Link>
-                        <Link href="">
+                        <Link href="https://www.youtube.com/@afyatalks">
                             <YoutubeIcon />
                         </Link>
                         <Link href="">
