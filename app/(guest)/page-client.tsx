@@ -14,6 +14,7 @@ import Image from 'next/image';
 import CustomButton from '@/components/ui/custom-button';
 import HomeUpcomingEvents from './_components/home-upcoming-events';
 import HomeBlogsSlider from './_components/home-blogs-slider';
+import ProviderHubSlider from './_components/provider-hub-slider';
 
 
 interface HomePageClientProps {
@@ -108,16 +109,8 @@ const HomePageClient = ({ data }: HomePageClientProps) => {
       <div className="app-container pb-8">
         <h1 className="text-center text-secondary font-semibold text-2xl pb-3">Your Healthcare Hub</h1>
 
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-4">
-          {CONSTANTS.providerHubs.map((provider) => (
-            <div className="p-5 border-2 border-slate-50 shadow rounded-2xl hover:shadow-xl hover:cursor-pointer hover:bg-slate-100" key={provider.id}>
-              <Image src={provider.icon} alt={`${provider.title}`} width={50} height={50} />
-              <div className="pt-3 space-y-2">
-                <h1 className="text-secondary font-semibold text-sm">{provider.title}</h1>
-                <p className="text-muted-foreground text-xs">{provider.subtitle}</p>
-              </div>
-            </div>
-          ))}
+        <div className="">
+          <ProviderHubSlider />
         </div>
       </div>
 

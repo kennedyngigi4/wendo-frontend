@@ -43,6 +43,7 @@ const HomeProfessionalsSlider = ({ professionals }: HomeProfessionalsSliderProps
                                 swiper.navigation.update();
                             }
                         });
+                        
                     }}
                     navigation={{}}
                     spaceBetween={16}

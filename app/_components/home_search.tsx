@@ -59,16 +59,16 @@ const HomeSearch = () => {
     }
 
     return (
-        <section className="app-container md:w-[60%] rounded-3xl bg-primary shadow relative z-20 -mt-40">
-            <div className="flex items-center  text-white">
-                <div className="w-1/2 py-10">
+        <section className="app-container md:w-[60%] max-md:ms-1 rounded-3xl bg-primary shadow relative z-20 -mt-40">
+            <div className="flex items-center  text-white mt-16 mx-5">
+                <div className="w-full md:w-1/2 py-10">
                     <h1 className="text-2xl text-white">OPEN DOOR TO</h1>
                     <h1 className="text-3xl font-bold">BETTER HEALTH</h1>
-                    <p className="py-5">Online consultation</p>
-                    <Button variant="secondary" className="cursor-pointer">Book Appointment</Button>
+                    {/* <p className="py-5">Online consultation</p>
+                    <Button variant="secondary" className="cursor-pointer">Book Appointment</Button> */}
                 </div>
-                <div className="relative w-[400px] h-[250px] w-1/2">
-                    <Image src="/assets/images/others/search.png" alt="Afyhub" fill className="object-cover" />
+                <div className="relative w-[400px] h-[250px] w-1/2 hidden md:block">
+                    <Image src="/assets/images/others/search.png" alt="Wendo Health" fill className="object-cover" />
                 </div>
             </div>
             <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 w-[80%] shadow-xl bg-white rounded-2xl h-[50px] flex justify-center items-center">

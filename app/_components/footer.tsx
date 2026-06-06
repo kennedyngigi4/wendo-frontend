@@ -26,8 +26,8 @@ const MainFooter = () => {
             </div>
         </div>
         <div className="bg-primary text-white">
-            <div className="app-container grid md:grid-cols-12 grid-cols-1 gap-8 py-8">
-                <div className="md:col-span-5">
+            <div className="app-container grid md:grid-cols-12 grid-cols-12 gap-8 py-8">
+                <div className="col-span-12 md:col-span-5">
                     <Image src="/wendo-footer-logo.png" alt="Wendo Health" width={250} height={250} />
                     <p className="pt-4 text-sm leading-6">To become Africa’s leading healthcare discovery and engagement platform, transforming how people access healthcare services through innovation, trust, and community impact.</p>
                 
@@ -46,7 +46,7 @@ const MainFooter = () => {
                         </Link>
                     </div>
                 </div>
-                <div className="md:col-span-2">
+                <div className="col-span-6 md:col-span-2">
                     <h1 className="font-semibold">Company</h1>
                     <nav className="flex flex-col space-y-2 pt-3 text-sm">
                         <Link href="/about-us">About Us</Link>
@@ -57,7 +57,7 @@ const MainFooter = () => {
                         <Link href="/partnerships">Partnerships</Link>
                     </nav>
                 </div>
-                <div className="md:col-span-2">
+                  <div className="col-span-6 md:col-span-2">
                     <h1 className="font-semibold">Products</h1>
                     <nav className="flex flex-col space-y-2 pt-3 text-sm">
                         <Link href="/doctors">Doctors</Link>
@@ -68,7 +68,7 @@ const MainFooter = () => {
                         <Link href="/nursing-homes">Nursing Homes</Link>
                     </nav>
                 </div>
-                <div className="md:col-span-3">
+                  <div className="col-span-12 md:col-span-3">
                     <h1 className="font-semibold">Contact Us</h1>
                     <nav className="flex flex-col space-y-2 pt-3 text-sm">
                         <Link href="" className="flex space-x-2 items-center">
