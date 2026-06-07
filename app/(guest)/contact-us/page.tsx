@@ -1,5 +1,6 @@
 "use client";
 
+import { HandshakeIcon, MailIcon, PhoneIcon } from "lucide-react";
 import React from "react";
 
 const ContactUsPage = () => {
@@ -28,7 +29,7 @@ const ContactUsPage = () => {
                         {/* Email */}
                         <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300">
                             <div className="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center text-2xl mb-5">
-                                📩
+                                <MailIcon />
                             </div>
 
                             <h2 className="font-semibold text-lg text-secondary">
@@ -48,7 +49,7 @@ const ContactUsPage = () => {
                         {/* Phone */}
                         <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300">
                             <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center text-2xl mb-5">
-                                📞
+                                <PhoneIcon />
                             </div>
 
                             <h2 className="font-semibold text-lg text-secondary">
@@ -68,7 +69,7 @@ const ContactUsPage = () => {
                         {/* Community */}
                         <div className="bg-white border border-slate-100 rounded-3xl p-6 shadow-sm hover:shadow-xl transition-all duration-300">
                             <div className="w-14 h-14 rounded-2xl bg-purple-100 flex items-center justify-center text-2xl mb-5">
-                                🌍
+                                <HandshakeIcon />
                             </div>
 
                             <h2 className="font-semibold text-lg text-secondary">

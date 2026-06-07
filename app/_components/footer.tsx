@@ -1,13 +1,43 @@
 "use client";
 
-import React from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FacebookIcon, InstagramIcon, LinkedinIcon, MailIcon, PhoneCallIcon, YoutubeIcon } from 'lucide-react';
+import { FacebookIcon, HeadphonesIcon, InstagramIcon, LinkedinIcon, MailIcon, PhoneCallIcon, TabletSmartphoneIcon, YoutubeIcon } from 'lucide-react';
+import { ApiRequests } from '@/lib/requests/api-requests';
+import { toast } from 'sonner';
 
 
 
 const MainFooter = () => {
+
+    const [ email, setEmail ] = useState("");
+    const [loading, setLoading] = useState(false);
+
+    const handleSubscription = async() => {
+        if(!email) return;
+
+        setLoading(true);
+        const payload = {
+            "email": email
+        }
+
+        try{
+            const resp = await ApiRequests.post("notifications/newsletter_subscription/", payload);
+            console.log(resp)
+            if(resp.success){
+                toast.success(resp.message);
+                setEmail("");
+            } else {
+                toast.error(resp.errors);
+            }
+        } catch(error){
+            toast.error("Something went wrong.");
+        } finally {
+            setLoading(false);
+        }
+    }
+
   return (
     <footer className="">
         <div className="bg-gradient-to-b from-blue-50 to-white py-14">
@@ -27,7 +57,7 @@ const MainFooter = () => {
                     {/* Podcast */}
                     <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300">
                         <div className="w-14 h-14 rounded-2xl bg-red-100 flex items-center justify-center mb-5">
-                            🎙️
+                            <HeadphonesIcon />
                         </div>
 
                         <h2 className="text-lg font-semibold text-secondary">
@@ -40,7 +70,7 @@ const MainFooter = () => {
                         </p>
 
                         <Link href="/health-learning-hub">
-                            <button className="mt-5 text-sm font-medium text-primary hover:underline">
+                            <button className="mt-5 text-sm font-medium text-primary hover:underline cursor-pointer">
                                 Listen Now →
                             </button>
                         </Link>
@@ -50,7 +80,7 @@ const MainFooter = () => {
                     {/* Newsletter */}
                     <div className="bg-primary rounded-3xl p-6 text-white shadow-sm hover:shadow-xl transition-all duration-300">
                         <div className="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center mb-5">
-                            📩
+                            <MailIcon />
                         </div>
 
                         <h2 className="text-lg font-semibold">
@@ -66,11 +96,17 @@ const MainFooter = () => {
                             <input
                                 type="email"
                                 placeholder="Enter your email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                                 className="w-full bg-gray-50 rounded-xl px-4 py-3 text-sm text-secondary outline-none"
                             />
 
-                            <button className="bg-white text-primary px-4 rounded-xl text-sm font-medium hover:bg-slate-100">
-                                Join
+                            <button 
+                                className="bg-white text-primary px-4 rounded-xl text-sm font-medium hover:bg-slate-100 cursor-pointer"
+                                onClick={handleSubscription}
+                                disabled={loading}
+                            >
+                                {loading ? "Joining ...." : "Join"}
                             </button>
                         </div>
                     </div>
@@ -78,7 +114,7 @@ const MainFooter = () => {
                       {/* App */}
                       <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100 hover:shadow-xl transition-all duration-300">
                           <div className="w-14 h-14 rounded-2xl bg-green-100 flex items-center justify-center mb-5">
-                              📱
+                              <TabletSmartphoneIcon />
                           </div>
 
                           <h2 className="text-lg font-semibold text-secondary">
@@ -91,11 +127,11 @@ const MainFooter = () => {
                           </p>
 
                           <div className="flex gap-3 mt-5">
-                              <button className="bg-secondary text-white px-4 py-2 rounded-xl text-sm">
+                              <button className="bg-secondary text-white px-4 py-2 rounded-xl text-sm cursor-pointer">
                                   App Store
                               </button>
 
-                              <button className="bg-secondary text-white px-4 py-2 rounded-xl text-sm">
+                              <button className="bg-secondary text-white px-4 py-2 rounded-xl text-sm cursor-pointer">
                                   Google Play
                               </button>
                           </div>

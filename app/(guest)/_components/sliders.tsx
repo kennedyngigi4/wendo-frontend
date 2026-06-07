@@ -29,7 +29,7 @@ export default function Sliders() {
             >
                 {/* Slide 0 */}
                 <SwiperSlide className="relative w-full h-[300px] z-20">
-                    <Image src="/assets/images/slides/1.jpg" alt="Slide 1" fill className="object-cover z-10 w-full h-[300px]" priority />
+                    <Image src="/assets/images/slides/1.png" alt="Slide 1" fill className="object-cover z-10 w-full h-[300px]" priority />
                     <div className="absolute inset-0 bg-black/30 flex pt-20 justify-center z-10">
                         <motion.div
                             variants={caption}
