@@ -23,6 +23,8 @@ const PatientRegisterPage = () => {
       fullname: "",
       phone: "",
       password: "",
+      terms: false,
+      marketingConsent: false,
     }
   });
   const { isSubmitting } = form.formState;
@@ -37,6 +39,7 @@ const PatientRegisterPage = () => {
         "phone": values.phone,
         "password": values.password,
         "role": "patient",
+        marketing_consent: values.marketingConsent,
       }
 
       const resp = await ApiRequests.post("account/register/", payload);
@@ -113,7 +116,7 @@ const PatientRegisterPage = () => {
 
                   <CustomFormField
                     fieldType="checkbox"
-                    name="terms"
+                    name="marketingConsent"
                     control={form.control}
                     placeholder="I would like to receive educational and marketing materials from Wendo"
                   />

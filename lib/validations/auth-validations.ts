@@ -5,6 +5,10 @@ export const registerSchema = z.object({
     fullname: z.string().min(2, "Full name is required."),
     phone: z.string().min(8, "Phone number is required."),
     password: z.string().min(8, "Password must be at least 8 characters."),
+    terms: z.boolean().refine((value) => value === true, {
+            message: "You must agree to the Terms & Conditions",
+        }),
+    marketingConsent: z.boolean().optional(),
 });
 
 
