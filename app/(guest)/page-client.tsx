@@ -46,6 +46,7 @@ const HomePageClient = ({ data }: HomePageClientProps) => {
               <img
                 src="/assets/images/others/about_2.jpg"
                 className="w-[400px] md:w-[500px] rounded-4xl border-4 border-blue-200"
+                alt="Wendo Health - Connecting You to Trusted Healthcare"
               />
 
               {/* Small Overlapping Image */}

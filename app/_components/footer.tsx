@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { FacebookIcon, HeadphonesIcon, InstagramIcon, LinkedinIcon, MailIcon, PhoneCallIcon, TabletSmartphoneIcon, YoutubeIcon } from 'lucide-react';
 import { ApiRequests } from '@/lib/requests/api-requests';
 import { toast } from 'sonner';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTiktok } from "@fortawesome/free-brands-svg-icons";
 
 
 
@@ -149,18 +151,21 @@ const MainFooter = () => {
                     <p className="pt-4 text-sm leading-6">To become Africa’s leading healthcare discovery and engagement platform, transforming how people access healthcare services through innovation, trust, and community impact.</p>
                 
                     <div className="pt-10 flex space-x-4">
-                        <Link href="https://www.facebook.com/wendo.health/">
-                            <FacebookIcon />
-                        </Link>
-                        <Link href="https://www.youtube.com/@afyatalks">
+                        <a href="https://www.youtube.com/@afyatalks" target="_blank" rel="noopener noreferrer">
                             <YoutubeIcon />
-                        </Link>
-                        <Link href="">
+                        </a>
+                        <a href="https://www.facebook.com/wendo.health/" target="_blank" rel="noopener noreferrer">
+                            <FacebookIcon />
+                        </a>
+                        <a href="" target="_blank" rel="noopener noreferrer">
                             <InstagramIcon />
-                        </Link>
-                        <Link href="">
+                        </a>
+                        <a href="" target="_blank" rel="noopener noreferrer">
                             <LinkedinIcon />
-                        </Link>
+                        </a>
+                        <a href="" target="_blank" rel="noopener noreferrer">
+                            <FontAwesomeIcon icon={faTiktok} size="lg" />
+                        </a>
                     </div>
                 </div>
                 <div className="col-span-6 md:col-span-2">

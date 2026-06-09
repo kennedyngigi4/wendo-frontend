@@ -87,6 +87,7 @@ const MainHeader = () => {
                         <Link
                             href="/about-us"
                             className="flex items-center text-sm hover:text-primary"
+                            aria-label="About Wendo Health"
                         >
                             <InfoIcon size={17} className="pe-1" />
                             About Us
@@ -95,6 +96,7 @@ const MainHeader = () => {
                         <Link
                             href="/contact-us"
                             className="flex items-center text-sm hover:text-primary"
+                            aria-label="Wendo Health Support"
                         >
                             <PhoneCall size={17} className="pe-1" />
                             Contact us
@@ -103,6 +105,7 @@ const MainHeader = () => {
                         <Link
                             href="/auth/login"
                             className="mx-2 flex items-center text-sm hover:text-primary"
+                            aria-label="Login to your account"
                         >
                             <User2Icon size={17} className="pe-1" />
                             Login

@@ -94,7 +94,6 @@ const ProfessionalForm = ({ id, userData }: ProfessionalFormProps) => {
     );
 
     // WATCHERS
-
     const selectedCountry = form.watch("country");
 
     useEffect(() => {
