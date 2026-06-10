@@ -11,11 +11,12 @@ import CustomFormField from '@/components/ui/custom-form-field';
 import CustomButton from '@/components/ui/custom-button';
 import Link from 'next/link';
 import { ApiRequests } from '@/lib/requests/api-requests';
+import { useRouter } from 'next/navigation';
 
 
 
 const PatientRegisterPage = () => {
-
+  const router = useRouter();
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
@@ -46,6 +47,7 @@ const PatientRegisterPage = () => {
       
       if(resp.success){
         toast.success(resp.message);
+        router.push("/auth/login/");
       } else {
         toast.error(resp.errors);
       }

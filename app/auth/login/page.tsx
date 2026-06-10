@@ -12,6 +12,7 @@ import CustomButton from '@/components/ui/custom-button';
 import { faGoogle } from "@fortawesome/free-brands-svg-icons"
 import { getSession, signIn } from "next-auth/react";
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 
 const LoginPage = () => {
@@ -94,7 +95,9 @@ const LoginPage = () => {
                   />
 
 
-                  
+                  <div className="w-full text-end text-xs text-blue-500">
+                    <Link href="/auth/forgot-password">Forgot password?</Link>
+                  </div>
 
                   
                   <CustomButton label="Login" variant="secondary" btnType="submit" isLoading={isSubmitting} loadingText="Processing ..." className="hover:bg-primary" />

@@ -32,6 +32,8 @@ const HospitalsClient = ({ hospitalsData }: HospitalsClientProps) => {
     router.push(`/hospitals?${params.toString()}`);
   };
 
+  console.log(hospitalsData);
+
   return (
     <div className="app-container">
       <div className="flex flex-col md:flex-row gap-4 py-8 max-md:px-5">
