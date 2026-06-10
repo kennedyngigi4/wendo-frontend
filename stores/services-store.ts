@@ -41,8 +41,7 @@ export const useServicesStore = create<ServicesStore>()(
                         ApiRequests.get("services/specialties/")
                     ]);
 
-                    console.log(servicesResp);
-                    console.log(specialtiesResp);
+                    
                     
                     set({
                         services: servicesResp,

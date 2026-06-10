@@ -7,7 +7,7 @@ const page = async() => {
     const data = await ApiRequests.get("providers/public/all/hospitals/");
    
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div className="flex items-center justify-center min-h-screen w-full">Loading...</div>}>
             <HospitalsClient hospitalsData={data} />
         </Suspense>
     )
