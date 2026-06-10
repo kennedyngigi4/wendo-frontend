@@ -53,7 +53,7 @@ export const ApiRequests = {
 
             const finalUrl = `${baseUrl}/${cleanUrl}`;
 
-            console.log("🌐 API REQUEST:", finalUrl);
+            
 
             const response = await fetch(finalUrl, {
                 method: "GET",
@@ -61,7 +61,7 @@ export const ApiRequests = {
                 cache: serverReq ? "no-store" : "default",
             });
 
-            console.log("📡 STATUS:", response.status);
+            
 
             const contentType = response.headers.get("content-type") || "";
 
@@ -71,19 +71,14 @@ export const ApiRequests = {
                 resp = await response.json();
             } else {
                 const text = await response.text();
-                console.log("⚠️ NON-JSON RESPONSE:", text);
                 throw new Error("API did not return JSON");
             }
 
             if (!response.ok) {
-                console.log("❌ API ERROR RESPONSE:", resp);
+                
                 throw new Error(resp?.errors || `Request failed with ${response.status}`);
             }
 
-            console.log("✅ API SUCCESS:", {
-                count: resp?.count,
-                results: resp?.results?.length,
-            });
 
             return resp;
         } catch (err: any) {
