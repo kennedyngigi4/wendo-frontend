@@ -13,6 +13,8 @@ interface BlogDetailsProps {
 const BlogClientDetailsPage = ({ blog }: BlogDetailsProps) => {
     const tags: string[] = blog.tags ?? [];
 
+    
+
     return (
         <div className="bg-white min-h-screen">
             {/* Hero */}
@@ -22,6 +24,7 @@ const BlogClientDetailsPage = ({ blog }: BlogDetailsProps) => {
                     alt={blog.title}
                     fill
                     priority
+                    unoptimized
                     className="object-cover"
                 />
 
