@@ -4,7 +4,7 @@ import { ApiRequests } from '@/lib/requests/api-requests'
 
 const HomePage = async() => {
 
-  const data = await ApiRequests.get("home/", undefined, true); 
+  const data = await ApiRequests.get("home/"); 
 
 
   return (
