@@ -16,8 +16,14 @@ const nextConfig: NextConfig = {
         port: "8000",
         pathname: "/media/**",
       },
+      {
+        protocol: "https",
+        hostname: "api.wendo.health",
+        pathname: "/media/**",
+      },
     ],
   },
+  
   typescript: {
     ignoreBuildErrors: true,
   },
