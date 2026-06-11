@@ -2,10 +2,12 @@ import React, { Suspense } from 'react'
 import HospitalsClient from './page-client'
 import { ApiRequests } from '@/lib/requests/api-requests';
 
+export const dynamic = "force-dynamic";
+
 const page = async() => {
 
    
-    const data = await ApiRequests.get("providers/public/all/hospitals/");
+    const data = await ApiRequests.get("providers/public/all/hospitals/", undefined, true);
 
     console.log("HOSPITALS DATA:", data);
 
