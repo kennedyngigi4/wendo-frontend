@@ -21,7 +21,7 @@ const BlogCardComponent = ({ blog }: BlogCardComponentProps) => {
       <CardContent className="space-y-4 pb-5">
         <Link href={`blogs/${blog.slug}/`}>
           <h1 className="text-secondary line-clamp-2 font-semibold">{blog.title}</h1>
-          <div className="text-muted-foreground text-sm line-clamp-3 py-2"  dangerouslySetInnerHTML={{ __html: blog.exerpt }}></div>
+          <div className="text-muted-foreground text-sm line-clamp-3 py-1"  dangerouslySetInnerHTML={{ __html: blog.exerpt }}></div>
         
 
           <div className="grid grid-cols-1 md:grid-cols-2">
