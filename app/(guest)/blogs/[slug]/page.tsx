@@ -4,16 +4,16 @@ import { ApiRequests } from '@/lib/requests/api-requests'
 
 
 type BlogDetailsPageProps = {
-    params: {
+    params: Promise<{
         slug: string;
-    }
+    }>
 }
 
-const stripHtml = (html: string) => html.replace(/<[^>]*>/g, "");
+const stripHtml = (html?: string) => html ? html.replace(/<[^>]*>/g, "") : "";
 
 async function getBlog(slug: string) {
     return ApiRequests.get(
-        `blogs/${slug}/`,
+        `blogs/blog_details/${slug}`,
         undefined,
         true
     );
@@ -21,7 +21,7 @@ async function getBlog(slug: string) {
 
 export async function generateMetadata({ params }: BlogDetailsPageProps) {
 
-    const { slug } = params;
+    const { slug } = await params;
 
     const blog = await getBlog(slug);
 
@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: BlogDetailsPageProps) {
 
 const BlogDetailsPage = async ({ params } : BlogDetailsPageProps) => {
 
-    const { slug } = params;
+    const { slug } = await params;
 
     const data = await getBlog(slug);
 

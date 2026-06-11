@@ -16,7 +16,7 @@ export interface BlogDetailsModel {
     image: string;
     exerpt: string;
     content: string;
-    tags: string;
+    tags: any[];
     date_published: string
     description: string
 

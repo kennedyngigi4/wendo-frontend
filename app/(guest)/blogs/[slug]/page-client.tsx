@@ -11,7 +11,7 @@ interface BlogDetailsProps {
 }
 
 const BlogClientDetailsPage = ({ blog }: BlogDetailsProps) => {
-    const tags = blog.tags?.split(",").map((tag) => tag.trim()) || [];
+    const tags: string[] = blog.tags ?? [];
 
     return (
         <div className="bg-white min-h-screen">
@@ -27,7 +27,7 @@ const BlogClientDetailsPage = ({ blog }: BlogDetailsProps) => {
 
                 <div className="absolute inset-0 bg-black/50 flex items-end">
                     <div className="app-container pb-10 text-white">
-                        <span className="inline-block bg-blue-600 px-4 py-1 rounded-full text-sm mb-4">
+                        <span className="inline-block bg-primary px-4 py-1 rounded-full text-sm mb-4">
                             {blog.category?.name}
                         </span>
 
@@ -58,7 +58,7 @@ const BlogClientDetailsPage = ({ blog }: BlogDetailsProps) => {
             <div className="app-container py-12">
                 <Link
                     href="/blogs"
-                    className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-700 mb-8"
+                    className="inline-flex items-center gap-2 text-primary hover:text-blue-700 mb-8"
                 >
                     <ArrowLeft size={18} />
                     Back to Blogs
@@ -119,7 +119,7 @@ const BlogClientDetailsPage = ({ blog }: BlogDetailsProps) => {
                                     url: window.location.href,
                                 })
                             }
-                            className="inline-flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-lg hover:bg-blue-700"
+                            className="inline-flex items-center gap-2 bg-secondary text-white px-5 py-3 rounded-lg hover:bg-secondary"
                         >
                             <Share2 size={18} />
                             Share Article
@@ -127,7 +127,7 @@ const BlogClientDetailsPage = ({ blog }: BlogDetailsProps) => {
                     </div>
 
                     {/* CTA */}
-                    <div className="mt-16 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-2xl p-8 md:p-12">
+                    <div className="mt-16 bg-gradient-to-r bg-primary to-bg-secondary text-white rounded-2xl p-8 md:p-12">
                         <h2 className="text-2xl md:text-3xl font-bold mb-3">
                             Your Health Journey Starts Here
                         </h2>
@@ -138,10 +138,10 @@ const BlogClientDetailsPage = ({ blog }: BlogDetailsProps) => {
                         </p>
 
                         <Link
-                            href="/providers"
+                            href="/doctors"
                             className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-medium"
                         >
-                            Find a Healthcare Provider
+                            Find a Specialist
                         </Link>
                     </div>
                 </div>
