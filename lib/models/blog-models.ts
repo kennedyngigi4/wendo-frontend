@@ -10,13 +10,21 @@ export interface BlogHomeModel{
 
 
 export interface BlogDetailsModel {
-    id: string
-    slug: string
-    title: string
-    exerpt: string
+    id: string;
+    title: string;
+    slug: string;
+    image: string;
+    exerpt: string;
+    content: string;
+    tags: string;
     date_published: string
-    image: string
-    author: string
     description: string
+
+    
+    published_at: string;
+    category?: {
+        name: string;
+    };
+    author?: string
 }
 
