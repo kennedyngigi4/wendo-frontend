@@ -21,15 +21,15 @@ const BlogCardComponent = ({ blog }: BlogCardComponentProps) => {
       <CardContent className="space-y-4 pb-5">
         <Link href={`blogs/${blog.slug}/`}>
           <h1 className="text-secondary line-clamp-2 font-semibold">{blog.title}</h1>
-          <div className="text-muted-foreground text-sm line-clamp-4"  dangerouslySetInnerHTML={{ __html: blog.exerpt }}></div>
+          <div className="text-muted-foreground text-sm line-clamp-3 py-2"  dangerouslySetInnerHTML={{ __html: blog.exerpt }}></div>
         
 
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div>
-              <p>{new Date(blog.published_at).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "numeric"})}</p>
+              <p className='text-sm text-slate-500'>{new Date(blog.published_at).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "numeric"})}</p>
             </div>
             <div>
-              
+              <p className='text-sm text-slate-500'>Editor</p>
             </div>
           </div>
         </Link>
