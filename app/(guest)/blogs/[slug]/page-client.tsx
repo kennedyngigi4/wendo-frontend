@@ -77,16 +77,7 @@ const BlogClientDetailsPage = ({ blog }: BlogDetailsProps) => {
                     />
 
                     {/* Article */}
-                    <article
-                        className="
-              prose
-              prose-lg
-              max-w-none
-              prose-headings:text-gray-900
-              prose-p:text-gray-700
-              prose-a:text-blue-600
-              prose-img:rounded-xl
-            "
+                    <article className="prose prose-lg  max-w-none  prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-blue-600 prose-img:rounded-xl"
                         dangerouslySetInnerHTML={{
                             __html: blog.content,
                         }}

@@ -7,7 +7,7 @@ import { StarIcon } from 'lucide-react';
 
 const page = () => {
   return (
-    <div className="flex w-full min-h-screen items-center justify-center">
+    <div className="flex w-full min-h-screen items-center justify-center bg-white shadow rounded-2xl p-10">
       <DashboardEmptyStats
         icon={StarIcon}
         title="No reviews yet."
