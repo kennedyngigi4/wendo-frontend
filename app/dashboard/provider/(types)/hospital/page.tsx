@@ -26,8 +26,6 @@ const page = async() => {
 
   const data = await ApiRequests.get(`providers/hosi_dashboard/?branch_id=${activeWorkspace.id}`, session?.accessToken, true);
 
-  console.log(data)
-
   return (
     <HospitalDashboardClient data={data} />
   )

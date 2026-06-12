@@ -12,7 +12,7 @@ import DashboardEmptyStats from '../_components/dashboard-empty-stats';
 
 
 interface ProviderDashboardPageProps {
-  data: any;
+  data?: any;
 }
 
 const ProviderDashboardPage = ({ data }: ProviderDashboardPageProps) => {
@@ -89,7 +89,7 @@ const ProviderDashboardPage = ({ data }: ProviderDashboardPageProps) => {
                 </div>
                 <div>
                   <h1 className="font-semibold">Active Plans</h1>
-                  <h4 className="font-semibold">2</h4>
+                  <h4 className="font-semibold">1</h4>
                 </div>
               </div>
             </CardContent>
