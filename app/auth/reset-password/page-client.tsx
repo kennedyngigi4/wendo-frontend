@@ -44,7 +44,7 @@ const ResetPasswordClientPage = ({ uid, token }: ResetPasswordClientPageProps) =
             "password": values.password1
         }
 
-        const resp = await ApiRequests.post("account/reset_password", payload);
+        const resp = await ApiRequests.post("account/reset_password/", payload);
         if (resp.success) {
             toast.success(resp.message);
             router.push("/auth/login");

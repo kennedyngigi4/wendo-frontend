@@ -24,7 +24,7 @@ const ForgotPassword = () => {
 
     const onSubmit = async (values: z.infer<typeof forgotPasswordSchema>) => {
 
-        const resp = await ApiRequests.post("account/forgot_password", values);
+        const resp = await ApiRequests.post("account/forgot_password/", values);
         if(resp.success){
             toast.success(resp.message);
         } else {
