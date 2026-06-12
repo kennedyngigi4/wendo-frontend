@@ -738,25 +738,28 @@ const HospitalDetailsPage = ({
                         <div className="sticky top-24 space-y-6">
 
                             {/* BOOKING */}
-                            <Card className="rounded-3xl pt-0 border-0 shadow-xl overflow-hidden">
+                            {provider?.services?.length > 0 && (
+                                <Card className="rounded-3xl pt-0 border-0 shadow-xl overflow-hidden">
 
-                                <div className="bg-primary p-6 text-white">
-                                    <h2 className="text-2xl font-bold">
-                                        Book Appointment
-                                    </h2>
+                                    <div className="bg-primary p-6 text-white">
+                                        <h2 className="text-2xl font-bold">
+                                            Book Appointment
+                                        </h2>
 
-                                    <p className="text-white/80 mt-2 text-sm">
-                                        Schedule your visit quickly and easily.
-                                    </p>
-                                </div>
+                                        <p className="text-white/80 mt-2 text-sm">
+                                            Schedule your visit quickly and easily.
+                                        </p>
+                                    </div>
 
-                                <CardContent className="p-6 bg-white">
+                                    <CardContent className="p-6 bg-white">
 
-                                    <PatientBookingForm
-                                        services={provider.services}
-                                    />
-                                </CardContent>
-                            </Card>
+                                        <PatientBookingForm
+                                            services={provider.services}
+                                        />
+                                    </CardContent>
+                                </Card>
+                            )}
+                            
 
                             {/* LOCATION */}
                             {provider?.latitude && (

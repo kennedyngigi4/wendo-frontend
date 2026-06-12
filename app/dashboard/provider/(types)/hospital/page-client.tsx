@@ -186,7 +186,7 @@ const HospitalDashboardClient = ({ data }: HospitalDashboardClientProps) => {
                     </div>
 
                     <div>
-                        {data?.top_services.length > 0 ? (
+                        {data?.top_services?.length > 0 ? (
                             <div>
                                 <div className="flex justify-between items-center text-sm pt-3 pb-2 text-slate-700">
                                     <div>Service</div>
@@ -221,7 +221,7 @@ const HospitalDashboardClient = ({ data }: HospitalDashboardClientProps) => {
                     </div>
 
                     <div>
-                        {data?.latest_reviews.length > 0 ? (
+                        {data?.latest_reviews?.length > 0 ? (
                             <div>
                                 <div className="flex justify-between items-center text-sm pt-3 text-slate-700">
                                     <div>Service</div>
@@ -253,13 +253,13 @@ const HospitalDashboardClient = ({ data }: HospitalDashboardClientProps) => {
                                 <div className="flex gap-2 items-center">
                                     <CrownIcon size={35} />
                                     <div>
-                                        <h1 className="font-bold">{data?.subscription.plan}</h1>
-                                        <p className="text-sm"><strong>Since</strong> {new Date(data?.subscription.start_date).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "2-digit" })}</p>
+                                        <h1 className="font-bold">{data?.subscription?.plan}</h1>
+                                        <p className="text-sm"><strong>Since</strong> {new Date(data?.subscription?.start_date).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "2-digit" })}</p>
                                     </div>
                                 </div>
                                 <div>
-                                    <p className={cn("px-4 py-1 rounded-2xl text-sm capitalize", data?.subscription.is_active ? "bg-green-600" : "bg-red-500",)}>
-                                        {data?.subscription.status}
+                                    <p className={cn("px-4 py-1 rounded-2xl text-sm capitalize", data?.subscription?.is_active ? "bg-green-600" : "bg-red-500",)}>
+                                        {data?.subscription?.status}
                                     </p>
                                 </div>
                             </div>
@@ -269,7 +269,7 @@ const HospitalDashboardClient = ({ data }: HospitalDashboardClientProps) => {
                             <div className="space-y-5">
                                 <div>
                                     <p className="">Next Billing Date</p>
-                                    <h1 className="font-semibold">{new Date(data?.subscription.end_date).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "2-digit" })}</h1>
+                                    <h1 className="font-semibold">{new Date(data?.subscription?.end_date).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "2-digit" })}</h1>
                                 </div>
 
                             </div>

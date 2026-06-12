@@ -11,9 +11,10 @@ import Link from 'next/link';
 import CustomFormField from '@/components/ui/custom-form-field';
 import { ApiRequests } from '@/lib/requests/api-requests';
 import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 const ForgotPassword = () => {
-
+    const router = useRouter();
     const form = useForm<z.infer <typeof forgotPasswordSchema>>({
         resolver: zodResolver(forgotPasswordSchema),
         defaultValues: {
@@ -24,9 +25,14 @@ const ForgotPassword = () => {
 
     const onSubmit = async (values: z.infer<typeof forgotPasswordSchema>) => {
 
-        const resp = await ApiRequests.post("account/forgot_password/", values);
+        const payload = {
+            "email": values.email
+        }
+
+        const resp = await ApiRequests.post("account/forgot_password/", payload);
         if(resp.success){
             toast.success(resp.message);
+            router.push("/auth/login");
         } else {
             toast.error(resp.errors);
         }

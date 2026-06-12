@@ -2,15 +2,15 @@ import React, { Suspense } from 'react'
 import ResetPasswordClientPage from './page-client'
 
 type ResetPasswordPageProps = {
-    params: Promise<{
-        uid?: string,
-        token?: string
-    }>
-}
+    searchParams: Promise<{
+        uid?: string;
+        token?: string;
+    }>;
+};
 
-const ResetPasswordPage = async ({ params }: ResetPasswordPageProps) => {
+const ResetPasswordPage = async ({ searchParams }: ResetPasswordPageProps) => {
 
-    const { uid, token } = await params;
+    const { uid, token } = await searchParams;
 
     return (
         <div>
