@@ -35,7 +35,7 @@ const HospitalDashboardClient = ({ data }: HospitalDashboardClientProps) => {
         {
             id: 1,
             title: "Total Bookings",
-            stats:data?.stats.total_bookings ?? 0,
+            stats:data?.stats?.total_bookings ?? 0,
             metrics: "",
             icon: Calendar1Icon,
             iconbg: "bg-blue-100"
@@ -43,7 +43,7 @@ const HospitalDashboardClient = ({ data }: HospitalDashboardClientProps) => {
         {
             id: 2,
             title: "Patients Served",
-            stats: data?.stats.patients_served ?? 0,
+            stats: data?.stats?.patients_served ?? 0,
             metrics: "",
             icon: MessageCircleMore,
             iconbg: "bg-orange-100"
@@ -59,7 +59,7 @@ const HospitalDashboardClient = ({ data }: HospitalDashboardClientProps) => {
         {
             id: 4,
             title: "Average Rating",
-            stats: data?.stats.avg_rating ?? 0,
+            stats: data?.stats?.avg_rating ?? 0,
             metrics: "",
             icon: StarIcon,
             iconbg: "bg-yellow-50"
@@ -99,7 +99,7 @@ const HospitalDashboardClient = ({ data }: HospitalDashboardClientProps) => {
 
                     <div className="w-full pt-5">
                         <ChartContainer config={chartConfig}>
-                            <LineChart data={data.bookings_trend}>
+                            <LineChart data={data?.bookings_trend}>
                                 <CartesianGrid vertical={false} />
 
                                 <XAxis
