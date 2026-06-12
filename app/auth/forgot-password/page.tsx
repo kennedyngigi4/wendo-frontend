@@ -9,6 +9,8 @@ import CustomButton from '@/components/ui/custom-button';
 import { FieldGroup, FieldSet } from '@/components/ui/field';
 import Link from 'next/link';
 import CustomFormField from '@/components/ui/custom-form-field';
+import { ApiRequests } from '@/lib/requests/api-requests';
+import { toast } from 'sonner';
 
 const ForgotPassword = () => {
 
@@ -20,8 +22,14 @@ const ForgotPassword = () => {
     });
     const { isSubmitting } = form.formState;
 
-    const onSubmit = async() => {
+    const onSubmit = async (values: z.infer<typeof forgotPasswordSchema>) => {
 
+        const resp = await ApiRequests.post("account/forgot_password", values);
+        if(resp.success){
+            toast.success(resp.message);
+        } else {
+            toast.error(resp.errors);
+        }
     }
 
     return (

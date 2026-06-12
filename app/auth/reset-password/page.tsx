@@ -8,8 +8,14 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { FieldGroup, FieldSet } from '@/components/ui/field';
 import CustomFormField from '@/components/ui/custom-form-field';
 import CustomButton from '@/components/ui/custom-button';
+import { ApiRequests } from '@/lib/requests/api-requests';
+import { toast } from 'sonner';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 const ResetPassword = () => {
+
+    const router = useRouter();
+    const searchParams = useSearchParams();
     const form = useForm<z.infer<typeof resetPasswordSchema>>({
         resolver: zodResolver(resetPasswordSchema),
         defaultValues: {
@@ -19,8 +25,29 @@ const ResetPassword = () => {
     });
     const { isSubmitting } = form.formState;
 
-    const onSubmit = async () => {
+    const uid = searchParams.get("uid");
+    const token = searchParams.get("token");
 
+    const onSubmit = async (values: z.infer<typeof resetPasswordSchema>) => {
+
+        if(values.password1 !== values.password2){
+            toast.error("Passwords must match.");
+            return;
+        }
+
+        const payload = {
+            "uid": uid,
+            "token": token,
+            "password": values.password1
+        }
+
+        const resp = await ApiRequests.post("account/reset_password", payload);
+        if (resp.success) {
+            toast.success(resp.message);
+            router.push("/auth/login");
+        } else {
+            toast.error(resp.errors);
+        }
     }
 
     return (

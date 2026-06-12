@@ -7,7 +7,7 @@ const page = async() => {
     const session = await auth();
 
     const data = await ApiRequests.get("providers/dashboard/", session?.accessToken, true);
-    console.log(data);
+    
 
     return (
         <ProviderDashboardPage data={data} />

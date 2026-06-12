@@ -113,7 +113,7 @@ const WorkingHoursClientPage = ({ branch_id, data }: WorkingHoursClientPageProps
     const onSubmit = async (values: FormValues) => {
         try{
             
-            const resp = await ApiRequests.post(`providers/working_hours/?branch_id=${branch_id}/`, values, session?.accessToken);
+            const resp = await ApiRequests.post(`providers/working_hours/?branch_id=${branch_id}`, values, session?.accessToken);
             if(resp.success){
                 toast.success(resp.message);
             } else {
