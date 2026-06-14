@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { Button } from '@/components/ui/button';
 import CustomButton from '@/components/ui/custom-button';
+import { trackEvent } from '@/lib/helpers/analytics';
 
 
 
@@ -45,36 +46,51 @@ const MainFooter = () => {
   return (
     <footer className="">
 
-        {/* MENTAL HEALTH BUTTON */}
-        <div>
-            <Link href="/mental-wellness-support" 
-                className="fixed bottom-6 right-6 z-50 md:hidden">
-                <CustomButton
-                    label="Support"
-                    btnType="button"
-                    prefixIcon={{
-                        type: "lucide",
-                        icon: HeartHandshake,
-                    }}
-                    className="bg-gradient-to-r
-            from-teal-500
-            to-blue-600"
-                />
-            </Link>
+          {/* MENTAL HEALTH BUTTON */}
+          <div>
+              <Link
+                  href="/mental-wellness-support"
+                  className="fixed bottom-6 right-6 z-50 md:hidden"
+              >
+                  <CustomButton
+                      label="Support"
+                      btnType="button"
+                      prefixIcon={{
+                          type: "lucide",
+                          icon: HeartHandshake,
+                      }}
+                      className="bg-gradient-to-r from-teal-500 to-blue-600"
+                      onClick={() =>
+                          trackEvent(
+                              "mental_wellness_support_clicked",
+                              "mental_wellness_cta",
+                              "mobile_button"
+                          )
+                      }
+                  />
+              </Link>
 
-            <Link href="/mental-wellness-support" className="fixed bottom-6 right-6 z-50 hidden md:block">
-                <CustomButton
-                    label="Mental Wellness Support"
-                    btnType="button"
-                    prefixIcon={{
-                        type: "lucide",
-                        icon: HeartHandshake,
-                    }}
-                    className="bg-gradient-to-r
-            from-teal-500
-            to-blue-600"
-                />
-            </Link>
+              <Link
+                  href="/mental-wellness-support"
+                  className="fixed bottom-6 right-6 z-50 hidden md:block"
+              >
+                  <CustomButton
+                      label="Mental Wellness Support"
+                      btnType="button"
+                      prefixIcon={{
+                          type: "lucide",
+                          icon: HeartHandshake,
+                      }}
+                      className="bg-gradient-to-r from-teal-500 to-blue-600"
+                      onClick={() =>
+                          trackEvent(
+                              "mental_wellness_support_clicked",
+                              "mental_wellness_cta",
+                              "desktop_button"
+                          )
+                      }
+                  />
+              </Link>
         </div>
 
 
