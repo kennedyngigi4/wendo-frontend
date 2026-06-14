@@ -3,13 +3,13 @@
 import React from "react";
 import Image from "next/image";
 import { MapPin, PhoneIcon, Star } from "lucide-react";
-import { ProviderBranchList } from "@/lib/models/provider-models";
+import { ProviderBranchCard } from "@/lib/models/provider-models";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 interface ProviderHCardProps {
-  hospital: ProviderBranchList;
+  hospital: ProviderBranchCard;
 }
 
 const ProviderHCardPremium = ({ hospital }: ProviderHCardProps) => {
@@ -68,21 +68,30 @@ const ProviderHCardPremium = ({ hospital }: ProviderHCardProps) => {
           </div>
 
           {/* TYPE + SPECIALTIES */}
-          <p className="text-xs text-gray-500 mt-1">
-            Hospital • General Care • Emergency
+          <p className="text-xs text-gray-500 mt-1 capitalize">
+              {hospital?.provider_type} • {hospital?.ownership_type} • {hospital?.level}
           </p>
 
           {/* TAGS */}
           <div className="flex flex-wrap gap-2 pt-4">
-            <span className="text-xs bg-blue-50 px-2 py-1 rounded-md">
-              24/7
-            </span>
-            <span className="text-xs bg-blue-50 px-2 py-1 rounded-md">
-              SHA Accepted
-            </span>
-            <span className="text-xs bg-blue-50 px-2 py-1 rounded-md">
-              Pharmacy
-            </span>
+            {hospital?.accepts_nhif && (
+              <span className="text-xs bg-blue-50 px-2 py-1 rounded-md">
+                SHA
+              </span>
+            )}
+
+            {hospital?.has_ambulance && (
+              <span className="text-xs bg-blue-50 px-2 py-1 rounded-md">
+                Ambulance
+              </span>
+            )}
+
+            {hospital?.has_pharmacy && (
+                <span className="text-xs bg-blue-50 px-2 py-1 rounded-md">
+                  Pharmacy
+                </span>
+            )}
+            
           </div>
         </div>
 
@@ -101,9 +110,9 @@ const ProviderHCardPremium = ({ hospital }: ProviderHCardProps) => {
 
           {/* HOURS */}
           <div className="mt-4">
-            {hospital.availability && (
-              <span className={cn("text-xs px-2 py-1 rounded", hospital.availability.available ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700")}>
-                  {hospital.availability.message}
+            {hospital?.availability && (
+              <span className={cn("text-xs px-2 py-1 rounded", hospital?.availability.available ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700")}>
+                  {hospital?.availability?.message}
               </span>
             )}
           </div>
@@ -117,13 +126,19 @@ const ProviderHCardPremium = ({ hospital }: ProviderHCardProps) => {
 
         {/* ACTIONS */}
         <div className="flex gap-2 mt-3">
-          <Button variant="secondary" className="flex-1 py-2 rounded-lg text-sm font-medium hover:opacity-90">
-            Book Appointment
-          </Button>
+          <Link href={`/hospitals/${hospital.slug}/#booking`}>
+            <Button variant="secondary" className="flex-1 py-2 rounded-lg text-sm font-medium hover:opacity-90">
+              Book Appointment
+            </Button>
+          </Link>
 
-          <button className="px-4 border border-gray-300 rounded-lg text-sm hover:bg-gray-100">
-            Call
-          </button>
+          
+            <button className="px-4 border border-gray-300 rounded-lg text-sm hover:bg-gray-100">
+              <a href={`tel:${hospital?.phone}`}>
+                Call
+              </a>
+            </button>
+          
         </div>
       </div>
     </div>

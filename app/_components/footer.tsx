@@ -3,11 +3,13 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FacebookIcon, HeadphonesIcon, InstagramIcon, LinkedinIcon, MailIcon, PhoneCallIcon, TabletSmartphoneIcon, YoutubeIcon } from 'lucide-react';
+import { FacebookIcon, HeadphonesIcon, HeartHandshake, InstagramIcon, LinkedinIcon, MailIcon, PhoneCallIcon, TabletSmartphoneIcon, YoutubeIcon } from 'lucide-react';
 import { ApiRequests } from '@/lib/requests/api-requests';
 import { toast } from 'sonner';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTiktok } from "@fortawesome/free-brands-svg-icons";
+import { Button } from '@/components/ui/button';
+import CustomButton from '@/components/ui/custom-button';
 
 
 
@@ -42,6 +44,40 @@ const MainFooter = () => {
 
   return (
     <footer className="">
+
+        {/* MENTAL HEALTH BUTTON */}
+        <div>
+            <Link href="/mental-wellness-support" 
+                className="fixed bottom-6 right-6 z-50 md:hidden">
+                <CustomButton
+                    label="Support"
+                    btnType="button"
+                    prefixIcon={{
+                        type: "lucide",
+                        icon: HeartHandshake,
+                    }}
+                    className="bg-gradient-to-r
+            from-teal-500
+            to-blue-600"
+                />
+            </Link>
+
+            <Link href="/mental-wellness-support" className="fixed bottom-6 right-6 z-50 hidden md:block">
+                <CustomButton
+                    label="Mental Wellness Support"
+                    btnType="button"
+                    prefixIcon={{
+                        type: "lucide",
+                        icon: HeartHandshake,
+                    }}
+                    className="bg-gradient-to-r
+            from-teal-500
+            to-blue-600"
+                />
+            </Link>
+        </div>
+
+
         <div className="bg-gradient-to-b from-blue-50 to-white py-14">
             <div className="app-container">
                 <div className="text-center max-w-2xl mx-auto mb-10">
@@ -174,7 +210,7 @@ const MainFooter = () => {
                         <Link href="/about-us">About Us</Link>
                         <Link href="/about-us#services">Our Services</Link>
                         <Link href="/about-us#impact">Our Impact</Link>
-                        <Link href="/careers">Careers</Link>
+                        <Link href="#">Careers</Link>
                         <Link href="/contact-us">Contact Us</Link>
                         <Link href="/partnerships">Partnerships</Link>
                     </nav>
@@ -185,9 +221,9 @@ const MainFooter = () => {
                         <Link href="/doctors">Doctors</Link>
                         <Link href="/hospitals">Hospitals</Link>
                         <Link href="/clinics">Clinics</Link>
-                        <Link href="/pharmacies">Pharmacies</Link>
-                        <Link href="/insurances">Health Insurance</Link>
-                        <Link href="/nursing-homes">Nursing Homes</Link>
+                        <Link href="#">Pharmacies</Link>
+                        <Link href="#">Health Insurance</Link>
+                        <Link href="#">Nursing Homes</Link>
                     </nav>
                 </div>
                   <div className="col-span-12 md:col-span-3">

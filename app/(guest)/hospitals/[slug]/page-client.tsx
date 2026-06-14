@@ -17,6 +17,7 @@ import { ExpandableAbout } from "../../_components/expandable-about";
 import { ExpandableServices } from "../../_components/expandable-services";
 import ReviewModalForm from "@/components/modals/review-modal";
 import { moveItem } from "framer-motion";
+import Link from "next/link";
 
 interface HospitalDetailsPageProps {
     provider: ProviderBranchDetailsModel;
@@ -109,38 +110,48 @@ const HospitalDetailsPage = ({
 
                                 {/* CTA BUTTONS */}
                                 <div className="flex flex-wrap gap-3 mt-8 mb-16">
-
-                                    <CustomButton
-                                        label="Book Appointment"
-                                        btnType="button"
-                                        variant="secondary"
-                                        className="shadow-2xl"
-                                        prefixIcon={{
-                                            type: "lucide",
-                                            icon: Calendar1Icon,
-                                        }}
-                                    />
-
-                                    <CustomButton
-                                        label="Call Hospital"
-                                        btnType="button"
-                                        variant="outline"
-                                        className="bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white hover:text-black"
-                                        prefixIcon={{
-                                            type: "lucide",
-                                            icon: PhoneCallIcon,
-                                        }}
-                                    />
-
-                                    <CustomButton
-                                        label="WhatsApp"
-                                        btnType="button"
-                                        className="bg-green-600 hover:bg-green-700"
-                                        prefixIcon={{
-                                            type: "fa",
-                                            icon: faWhatsapp,
-                                        }}
-                                    />
+                                    
+                                    <Link href="#booking">
+                                        <CustomButton
+                                            label="Book Appointment"
+                                            btnType="button"
+                                            variant="secondary"
+                                            className="shadow-2xl"
+                                            prefixIcon={{
+                                                type: "lucide",
+                                                icon: Calendar1Icon,
+                                            }}
+                                        />
+                                    </Link>
+                                    
+                                    <a href={`tel:${provider?.phone}`}>
+                                        <CustomButton
+                                            label="Call Hospital"
+                                            btnType="button"
+                                            variant="outline"
+                                            className="bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white hover:text-black"
+                                            prefixIcon={{
+                                                type: "lucide",
+                                                icon: PhoneCallIcon,
+                                            }}
+                                        />
+                                    </a>
+                                    
+                                    <a
+                                        href={`https://wa.me/${provider?.phone?.replace(/\D/g, "")}`}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        <CustomButton
+                                            label="WhatsApp"
+                                            btnType="button"
+                                            className="bg-green-600 hover:bg-green-700"
+                                            prefixIcon={{
+                                                type: "fa",
+                                                icon: faWhatsapp,
+                                            }}
+                                        />
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -751,7 +762,7 @@ const HospitalDetailsPage = ({
                                         </p>
                                     </div>
 
-                                    <CardContent className="p-6 bg-white">
+                                    <CardContent className="p-6 bg-white" id="booking">
 
                                         <PatientBookingForm
                                             services={provider.services}

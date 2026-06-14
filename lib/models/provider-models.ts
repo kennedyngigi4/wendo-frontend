@@ -44,8 +44,14 @@ export interface ProviderBranchCard {
     location_name: string;
     banner: string;
     is_open: boolean;
-    accepts_nhif: boolean;
-    rating: any;
+    accepts_nhif?: boolean;
+    rating?: any;
+    provider_type?: string
+    availability?: any
+    has_ambulance?: any
+    ownership_type?: string
+    level?: string
+    has_pharmacy?: any
 }
 
 

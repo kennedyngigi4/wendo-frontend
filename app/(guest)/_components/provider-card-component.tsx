@@ -62,18 +62,29 @@ const ProviderComponentCard = ({ provider }: ProviderComponentCardProps) => {
                     </div>
 
                     {/* TYPE */}
-                    <p className="text-xs text-gray-500 mt-1">
-                        Hospital • General Care
+                    <p className="flex text-xs text-gray-500 mt-1 capitalize space-x-3 flex-wrap">
+                        <span>{provider?.provider_type}</span> <span>•</span> 
+                        <span>{provider?.ownership_type}</span> <span>•</span> 
+                        <span>{provider?.level}</span>
                     </p>
 
                     {/* TAGS */}
                     <div className="flex flex-wrap gap-1 mt-2">
-                        <span className="text-[10px] bg-blue-50 px-2 py-0.5 rounded">
-                            24/7
-                        </span>
                         {provider.accepts_nhif && (
                             <span className="text-[10px] bg-blue-50 px-2 py-0.5 rounded">
-                                SHA
+                                SHA Accepted
+                            </span>
+                        )}
+
+                        {provider?.has_ambulance && (
+                            <span className="text-xs bg-blue-50 px-2 py-1 rounded-md">
+                                Ambulance
+                            </span>
+                        )}
+
+                        {provider?.has_pharmacy && (
+                            <span className="text-xs bg-blue-50 px-2 py-1 rounded-md">
+                                Pharmacy
                             </span>
                         )}
                         

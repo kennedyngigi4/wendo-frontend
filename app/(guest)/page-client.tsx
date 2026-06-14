@@ -37,74 +37,94 @@ const HomePageClient = ({ data }: HomePageClientProps) => {
       </div>
 
 
-      <div className="pt-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div>
-            <div className="relative w-full flex justify-end">
+      {/* HERO SECTION */}
+      <section className="py-16">
+          <div className="app-container">
+              <div className="grid lg:grid-cols-2 gap-12 items-center">
+                  {/* LEFT */}
+                  <div>
+                      <motion.span
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          className="uppercase font-semibold tracking-wide text-primary"
+                      >
+                          About Wendo Health
+                      </motion.span>
 
-              {/* Main Image */}
-              <img
-                src="/assets/images/others/about_2.jpg"
-                className="w-[400px] md:w-[500px] rounded-4xl border-4 border-blue-200"
-                alt="Wendo Health - Connecting You to Trusted Healthcare"
-              />
+                      <motion.h1
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="text-4xl md:text-5xl font-bold text-secondary mt-3 leading-tight"
+                      >
+                          Connecting You to Trusted Healthcare.
+                      </motion.h1>
 
-              {/* Small Overlapping Image */}
-              {/* <img
-                src="/assets/images/others/about_2_1.jpg"
-                className="hidden md:block absolute bottom-[-50px] left-[50px] w-[150px] rounded-2xl shadow-lg"
-              /> */}
+                      <p className="mt-6 text-slate-600 leading-8">
+                          Wendo Health is a digital healthcare platform helping
+                          individuals and families discover verified healthcare providers,
+                          clinics, hospitals, pharmacies, laboratories, and wellness
+                          services across Kenya and beyond.
+                      </p>
 
-            </div>
+                      <div className="flex flex-wrap gap-4 mt-8">
+                          <button className="bg-secondary text-white px-6 py-3 rounded-xl font-medium hover:opacity-90 transition">
+                              Find Healthcare Services
+                          </button>
+
+                          <button className="border border-secondary text-secondary px-6 py-3 rounded-xl font-medium hover:bg-secondary hover:text-white transition">
+                              Partner With Us
+                          </button>
+                      </div>
+
+                      {/* Stats */}
+                      <div className="grid grid-cols-3 gap-5 mt-10">
+                          <div>
+                              <h3 className="text-3xl font-bold text-secondary">500+</h3>
+                              <p className="text-sm text-slate-500">Providers</p>
+                          </div>
+
+                          <div>
+                              <h3 className="text-3xl font-bold text-secondary">20K+</h3>
+                              <p className="text-sm text-slate-500">Patients Reached</p>
+                          </div>
+
+                          <div>
+                              <h3 className="text-3xl font-bold text-secondary">47</h3>
+                              <p className="text-sm text-slate-500">Counties</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  {/* RIGHT */}
+                  <div className="relative flex justify-center">
+                      <div className="relative">
+                          <Image
+                              src="/assets/images/others/about_2.jpg"
+                              alt="Healthcare"
+                              width={520}
+                              height={600}
+                              className="rounded-3xl border-4 border-blue-100"
+                          />
+
+                          <div className="absolute -bottom-6 -left-6 bg-white shadow-xl rounded-2xl p-5">
+                              <h4 className="font-bold text-secondary text-xl">500+</h4>
+                              <p className="text-sm text-slate-500">
+                                  Verified Healthcare Providers
+                              </p>
+                          </div>
+
+                          <Image
+                              src="/assets/images/others/about_2_1.jpg"
+                              alt="Healthcare"
+                              width={170}
+                              height={170}
+                              className="hidden md:block absolute -top-5 -right-5 rounded-2xl shadow-xl border-4 border-white"
+                          />
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div className="space-y-3 app-container">
-
-            <div>
-              <motion.h1
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="text-primary font-semibold uppercase">About Us</motion.h1>
-              <motion.h1
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.9, ease: "easeOut" }}
-                className="text-secondary text-3xl font-bold">Connecting You to Trusted Healthcare Providers
-              </motion.h1>
-            </div>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="text-slate-700 leading-7"
-            >
-              Wendo Health is a digital healthcare platform built to connect patients with trusted healthcare providers across
-              Kenya and beyond. We make it easier for individuals and families to discover verified doctors, clinics, hospitals,
-              pharmacies, laboratories, and other healthcare services—quickly, safely, and conveniently.
-            </motion.p>
-            <motion.p
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.9, ease: "easeOut" }}
-              className=" text-slate-700 leading-7 max-md:hidden"
-            >
-              Beyond listings, Wendo supports healthcare providers with digital tools that improve visibility, strengthen patient
-              engagement, and enhance access to healthcare services. Through our platform, marketing solutions, and community-driven
-              initiatives, we are helping build a healthier and more connected society.
-            </motion.p>
-            
-            <Link href="/about-us">
-                <CustomButton 
-                  label="Learn More"
-                  btnType="button"
-                  variant="secondary"
-                  suffixIcon={{ type: "lucide", icon: ArrowRight }}
-                />
-              
-            </Link>
-          </div>
-        </div>
-      </div>
+      </section>
 
 
       <div className="app-container pb-8">
