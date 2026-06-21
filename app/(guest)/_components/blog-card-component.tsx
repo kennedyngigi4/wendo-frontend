@@ -24,12 +24,15 @@ const BlogCardComponent = ({ blog }: BlogCardComponentProps) => {
           <div className="text-muted-foreground text-sm line-clamp-3 py-1"  dangerouslySetInnerHTML={{ __html: blog.exerpt }}></div>
         
 
-          <div className="grid grid-cols-1 md:grid-cols-2">
+          <div className="flex justify-between items-center">
             <div>
               <p className='text-sm text-slate-500'>{new Date(blog.published_at).toLocaleDateString("en-us", { year: "numeric", month: "short", day: "numeric"})}</p>
             </div>
             <div>
-              <p className='text-sm text-slate-500'>Editor</p>
+              <p className='text-sm text-slate-500 pe-2'>
+                <span className="font-semibold">Author:</span>
+                <span>Editor</span>
+              </p>
             </div>
           </div>
         </Link>

@@ -53,7 +53,7 @@ const MainFooter = () => {
                   className="fixed bottom-6 right-6 z-50 md:hidden"
               >
                   <CustomButton
-                      label="Support"
+                      label="Wellness Support"
                       btnType="button"
                       prefixIcon={{
                           type: "lucide",
@@ -212,7 +212,7 @@ const MainFooter = () => {
                         <a href="" target="_blank" rel="noopener noreferrer">
                             <InstagramIcon />
                         </a>
-                        <a href="" target="_blank" rel="noopener noreferrer">
+                          <a href="https://www.linkedin.com/company/wendohealth" target="_blank" rel="noopener noreferrer">
                             <LinkedinIcon />
                         </a>
                         <a href="" target="_blank" rel="noopener noreferrer">
