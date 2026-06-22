@@ -14,9 +14,6 @@ import {
 } from "lucide-react";
 
 import { Card, CardContent } from "@/components/ui/card";
-
-import PatientBookingForm from "../../hospitals/_components/patient-booking-form";
-
 import {
     EducationModel,
     ProfessionalDetailsModel,
@@ -29,6 +26,7 @@ import {
 
 import DOMPurify from "dompurify";
 import ReviewModalForm from "@/components/modals/review-modal";
+import PatientBookingForm from "../../_components/patient-booking-form";
 
 interface DoctorClientDetailsProps {
     data: ProfessionalDetailsModel;
