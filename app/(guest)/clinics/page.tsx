@@ -5,7 +5,7 @@ import { ApiRequests } from '@/lib/requests/api-requests';
 const page = async() => {
 
   const data = await ApiRequests.get("providers/public/all/clinics/");
-  console.log(data)
+ 
 
   return (
     <div>

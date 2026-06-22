@@ -32,7 +32,6 @@ const HospitalsClient = ({ hospitalsData }: HospitalsClientProps) => {
     router.push(`/hospitals?${params.toString()}`);
   };
 
-  console.log(hospitalsData);
 
   return (
     <div className="app-container">

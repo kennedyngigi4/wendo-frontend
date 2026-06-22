@@ -46,7 +46,7 @@ const ProviderHCardPremium = ({ hospital }: ProviderHCardProps) => {
       <div className="md:w-2/3 p-4 flex flex-col justify-between space-y-3">
 
         {/* TOP SECTION */}
-        <Link href={`/hospitals/${hospital.slug}/`}>
+        <Link href={`/clinics/${hospital.slug}/`}>
         <div>
           <div className="flex items-start gap-2">
             {/* truncate leading-tight */}

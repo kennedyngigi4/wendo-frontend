@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { serviceSchema } from '@/lib/validations/all-validations';
 import { Controller, useForm } from 'react-hook-form';
 import * as z from "zod"
@@ -32,19 +32,32 @@ const ServiceForm = ({ id, data }: ServiceFormProps) => {
     const form = useForm<z.infer<typeof serviceSchema>>({
         resolver: zodResolver(serviceSchema),
         defaultValues: {
-            service: "",
+            serviceCategory: "",
             price: "",
             isAvailable: "",
             description: "",
-            specialties: [],
+            service: "",
         }
     });
     const { isSubmitting } = form.formState;
+     
 
-    const services = useServicesStore((state) => state.services);
-    const specialties = useServicesStore((state) => state.specialties);
+    const servicecategories = useServicesStore((state) => state.servicecategories);
+    const allservices = useServicesStore((state) => state.services);
     const loading = useServicesStore((state) => state.loading);
     const fetchData = useServicesStore((state) => state.fetchData);
+
+    const selectedCategory = form.watch("serviceCategory");
+    const filteredServices = useMemo(() => {
+        if (!selectedCategory) return [];
+
+        return allservices
+            .filter(service => service.category.id === selectedCategory)
+            .map(service => ({
+                value: service.id,
+                label: service.name,
+            }));
+    }, [allservices, selectedCategory]);
 
     useEffect(() => {
         fetchData();
@@ -52,32 +65,29 @@ const ServiceForm = ({ id, data }: ServiceFormProps) => {
 
 
     useEffect(() => {
-        if (data && services.length > 0 && specialties.length > 0) {
+        if (data && allservices.length > 0 && servicecategories.length > 0) {
             form.reset({
-                service: String(data.service ?? ""),
+                serviceCategory: String(data.service ?? ""),
                 price: data.price?.toString() ?? "",
                 isAvailable: data.is_available ? "true" : "false",
                 description: data.description || "",
-                specialties: data.specialties || [],
+                service: data.service || "",
             });
         }
-    }, [data, services, specialties, form]);
+    }, [data, allservices, servicecategories, form]);
 
 
     const onSubmit = async (values: z.infer<typeof serviceSchema>) => {
         
-        console.log(activeWorkspace.provider_type);
-        console.log(activeWorkspace.type);
+        
 
         try{
             const formData = new FormData();
-            formData.append("service", values.service);
+            formData.append("service_category", values.serviceCategory);
             formData.append("price", values.price);
             formData.append("is_available", values.isAvailable);
             formData.append("description", values.description);
-            values.specialties.forEach((id) => {
-                formData.append("specialties", id);
-            });
+            formData.append("service", values.service);
 
 
             let query = "";
@@ -132,15 +142,19 @@ const ServiceForm = ({ id, data }: ServiceFormProps) => {
                     <div>
                         <CustomFormField
                             fieldType="select"
-                            label="Select Service"
+                            label="Select Service Category"
                             control={form.control}
-                            name="service"
-                            placeholder="Choose a service"
+                            name="serviceCategory"
+                            placeholder="Choose a service category"
+                            onValueChange={(value) => {
+                                form.setValue("serviceCategory", value);
+                                form.setValue("service", ""); 
+                            }}
                         >
                             {loading ? (
                                 <p>Loading services...</p>
                             ) : (
-                                services.map((service) => (
+                                servicecategories.map((service) => (
                                     <SelectItem key={service.id} value={service.id}>
                                         {service.name}
                                     </SelectItem>
@@ -149,28 +163,23 @@ const ServiceForm = ({ id, data }: ServiceFormProps) => {
                         </CustomFormField>
                     </div>
                     <div>
-                        <Controller
+                        <CustomFormField
+                            fieldType="select"
+                            label="Select Service"
                             control={form.control}
-                            name="specialties"
-                            render={({ field, fieldState }) => (
-                                <div>
-                                    <FieldLabel className="pb-1.5">Specialties</FieldLabel>
-
-                                    <CustomMultiSelect
-                                        options={specialties}
-                                        value={field.value}
-                                        onChange={field.onChange}
-                                        placeholder="Select specialties"
-                                    />
-
-                                    {fieldState.error && (
-                                        <p className="text-sm text-red-500 mt-1">
-                                            {fieldState.error.message}
-                                        </p>
-                                    )}
-                                </div>
+                            name="service"
+                            placeholder="Choose a service"
+                        >
+                            {loading ? (
+                                <p>Loading services...</p>
+                            ) : (
+                                filteredServices.map((service) => (
+                                    <SelectItem key={service.value} value={service.value}>
+                                        {service.label}
+                                    </SelectItem>
+                                ))
                             )}
-                        />
+                        </CustomFormField>
                     </div>
                 </div>
 

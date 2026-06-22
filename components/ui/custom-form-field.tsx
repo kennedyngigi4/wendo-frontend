@@ -21,6 +21,7 @@ interface CustomFormFieldProps {
     description?: string,
     children?: React.ReactNode,
     disabled?: boolean,
+    onValueChange?: (value: string) => void;
 }
 
 const RenderField = ({ field, state, props }: { field: any, state: any, props: CustomFormFieldProps}) => {
@@ -89,7 +90,7 @@ const RenderField = ({ field, state, props }: { field: any, state: any, props: C
 
 const CustomFormField = (props : CustomFormFieldProps) => {
 
-    const { fieldType, name, control, label, placeholder, description, children, disabled } = props;
+    const { fieldType, name, control, label, placeholder, description, children, disabled, onValueChange } = props;
 
     return (
         <Controller

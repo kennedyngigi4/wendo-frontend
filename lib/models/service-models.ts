@@ -2,6 +2,7 @@ export interface ServiceCategoryModel {
     id: string;
     name: string;
     slug: string;
+    icon: string
 }
 
 export interface ServiceModel {
@@ -9,6 +10,7 @@ export interface ServiceModel {
     name: string;
     slug: string;
     icon: string;
+    category: ServiceCategoryModel
 }
 
 
@@ -29,9 +31,9 @@ export interface SpecialtyModel {
 
 export interface ServiceOfferingDetailsModel {
     id: string;
-    service: string;
+    serviceCategory: string;
     service_name: string;
-    specialties: SpecialtyModel[];
+    service: string;
     price: string;
     description: string;
     is_available: boolean;
