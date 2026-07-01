@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import {
   Camera,
+  CheckSquare2Icon,
   Mail,
   Phone,
   ShieldCheck,
@@ -50,9 +51,9 @@ const ProfileClientPage = ({ data }: ProfileClientPageProps) => {
         "fullname": data?.fullname || "",
         "email": data?.email || "",
         "phone": data?.phone || "",
-        "gender": data?.patientprofile.gender || "",
-        "dob": data?.patientprofile.dob || "",
-        "country": data?.patientprofile.country || ""
+        "gender": data?.patientprofile?.gender || "",
+        "dob": data?.patientprofile?.dob || "",
+        "country": data?.patientprofile?.country || ""
       });
     }
   }, [data, form])
@@ -172,13 +173,13 @@ const ProfileClientPage = ({ data }: ProfileClientPageProps) => {
 
               <div className="flex items-center gap-3">
 
-                <ShieldCheck
+                <CheckSquare2Icon
                   size={18}
                   className="text-green-600"
                 />
 
                 <span className="text-sm">
-                  Verified Account
+                  Active Account
                 </span>
 
               </div>

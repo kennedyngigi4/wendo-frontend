@@ -50,9 +50,9 @@ const ProfileClientPage = ({ data }: ProfileClientPageProps) => {
         "fullname": data?.fullname || "",
         "email": data?.email || "",
         "phone": data?.phone || "",
-        "gender": data?.patientprofile.gender || "",
-        "dob": data?.patientprofile.dob || "",
-        "country": data?.patientprofile.country || ""
+        "gender": data?.patientprofile?.gender || "",
+        "dob": data?.patientprofile?.dob || "",
+        "country": data?.patientprofile?.country || ""
       });
     }
   }, [data, form])
