@@ -16,7 +16,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-import { useSession } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import { useWorkspaceStore } from "@/stores/workspaceStore";
 import WorkspaceSwitcher from "./dashboard-workspaceswitcher";
 
@@ -27,12 +27,18 @@ import {
   ProviderAmbulanceMenus,
   ProviderProfessionalMenus,
 } from "@/lib/menus/dashboard-menus";
+import { LogOut } from "lucide-react";
+import CustomButton from "@/components/ui/custom-button";
 
 const DashboardSidebar = () => {
   const { open } = useSidebar();
   const { data: session } = useSession();
 
   const activeWorkspace = useWorkspaceStore((s) => s.activeWorkspace);
+
+  const onLogOut = async() => {
+    await signOut({ callbackUrl: "/", });
+  }
 
   // 1. Patient menus
   if (session?.user?.role === "patient") {
@@ -65,7 +71,16 @@ const DashboardSidebar = () => {
           </SidebarMenu>
         </SidebarContent>
 
-        <SidebarFooter />
+        <SidebarFooter>
+          <CustomButton 
+            label="Log out"
+            btnType="button"
+            prefixIcon={{ type: "lucide", icon: LogOut }}
+            onClick={onLogOut}
+            variant="ghost"
+            className="text-secondary"
+          />
+        </SidebarFooter>
         <SidebarRail />
       </Sidebar>
     );
@@ -124,7 +139,16 @@ const DashboardSidebar = () => {
         </SidebarMenu>
       </SidebarContent>
 
-      <SidebarFooter />
+      <SidebarFooter>
+        <CustomButton
+          label="Log out"
+          btnType="button"
+          prefixIcon={{ type: "lucide", icon: LogOut }}
+          onClick={onLogOut}
+          variant="ghost"
+          className="text-secondary"
+        />
+      </SidebarFooter>
       <SidebarRail />
     </Sidebar>
   );
