@@ -341,7 +341,7 @@ const DoctorClientDetails = ({
                                     </h2>
 
                                     <div>
-                                        <ReviewModalForm />
+                                        <ReviewModalForm providerId={data.id} providerType="professional" />
                                     </div>
                                 </div>
 

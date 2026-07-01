@@ -2,23 +2,23 @@ import { Ambulance, BellIcon, BriefcaseBusinessIcon, BriefcaseMedicalIcon, Calen
 
 export const PatientMenus = [
     {
-        label: "Account",
+        label: "Dashboard",
         url: "/dashboard/patient",
         icon: LayoutDashboard
     },
     {
-        label: "Bookings",
-        url: "/dashboard/patient/bookings",
+        label: "Appointments",
+        url: "/dashboard/patient/appointments",
         icon: Calendar1Icon
     },
     {
         label: "Reviews",
-        url: "/dashboard/patient/bookings",
+        url: "/dashboard/patient/reviews",
         icon: StarsIcon
     },
     {
         label: "Notifications",
-        url: "/dashboard/patient/bookings",
+        url: "/dashboard/patient/notifications",
         icon: BellIcon
     }
 ]

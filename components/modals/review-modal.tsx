@@ -10,20 +10,28 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import CustomFormField from '../ui/custom-form-field';
 import { FieldGroup } from '../ui/field';
+import { useSession } from 'next-auth/react';
+import { ApiRequests } from '@/lib/requests/api-requests';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 interface ReviewModalProps {
-
+    providerId: string;
+    providerType: string;
 }
 
-const ReviewModalForm = ({ }: ReviewModalProps) => {
+const ReviewModalForm = ({ providerId, providerType }: ReviewModalProps) => {
 
     const [ hover, setHover ] = useState(0);
     const [ rating, setRating ] = useState(0);
 
+    const { data:session } = useSession();
+    const router = useRouter();
+
     const form = useForm<z.infer<typeof reviewSchema>>({
         resolver: zodResolver(reviewSchema),
         defaultValues: {
-            rating: "",
+            rating: 0,
             comment: ""
         }
     });
@@ -33,8 +41,31 @@ const ReviewModalForm = ({ }: ReviewModalProps) => {
     
 
     const onSubmit = async (values: z.infer<typeof reviewSchema>) => {
+        try{
 
+            const formData = new FormData();
+            formData.append("rating", values.rating.toString());
+            formData.append("provider_type", providerType);
+            formData.append("provider_id", providerId);
+            if(values.comment){
+                formData.append("comment", values.comment);
+            }
+
+            const response = await ApiRequests.post("reviews/my_reviews/", formData, session?.accessToken);
+            if(response.success){
+                toast.success(response.message);
+                router.push("/dashboard/patient/reviews/");
+            } else {
+                toast.error(response.errors);
+            }
+        } catch(err) {
+            toast.error("A network error occured, " + err);
+        }
     }
+
+    const onError = (errors: any) => {
+        console.log(errors);
+    };
 
     return (
         <Dialog>
@@ -52,7 +83,7 @@ const ReviewModalForm = ({ }: ReviewModalProps) => {
                     <DialogDescription>A review helps other patients make informed decision, please be as honest as possible.</DialogDescription>
                 </DialogHeader>
                 <div>
-                    <form onSubmit={form.handleSubmit(onSubmit)}>
+                    <form onSubmit={form.handleSubmit(onSubmit, onError)}>
                         <FieldGroup>
 
                             <div className="mx-auto">
@@ -60,7 +91,12 @@ const ReviewModalForm = ({ }: ReviewModalProps) => {
                                     {[1, 2, 3, 4, 5].map((star) => (
                                         <span
                                             key={star}
-                                            onClick={() => setRating(star)}
+                                            onClick={() => {
+                                                setRating(star);
+                                                form.setValue("rating", star, {
+                                                    shouldValidate: true,
+                                                });
+                                            }}
                                             onMouseEnter={() => setHover(star)}
                                             onMouseLeave={() => setHover(0)}
                                             style={{
@@ -86,6 +122,8 @@ const ReviewModalForm = ({ }: ReviewModalProps) => {
                             <CustomButton 
                                 label="Submit"
                                 btnType="submit"
+                                isLoading={isSubmitting}
+                                loadingText="Sending...."
                                 variant="secondary"
                             />
                         </div>

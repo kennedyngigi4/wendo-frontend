@@ -1,9 +1,12 @@
 import React from 'react'
+import PatientDashboardClient from './page-client'
 
-const page = () => {
+const DashboardPage = async() => {
   return (
-    <div>page</div>
+    <div>
+      <PatientDashboardClient />
+    </div>
   )
 }
 
-export default page
+export default DashboardPage

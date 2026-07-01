@@ -32,8 +32,7 @@ const LoginPage = () => {
     try{
       
       const resp = await signIn("credentials", { email: values.email, password: values.password, redirect: false});
-      console.log(resp);
-      console.log(resp.error);
+      
       if (resp.error) {
         toast.error(resp.error);
         return;

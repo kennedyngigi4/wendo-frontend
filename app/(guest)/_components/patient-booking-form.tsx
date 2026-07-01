@@ -14,6 +14,7 @@ import { format } from "date-fns";
 import { ApiRequests } from '@/lib/requests/api-requests';
 import { toast } from 'sonner';
 import { patientBookingSchema } from '@/lib/validations/other-validations';
+import { useSession } from 'next-auth/react';
 
 
 
@@ -23,6 +24,7 @@ interface PatientBookingFormProps {
 
 const PatientBookingForm = ({ services }: PatientBookingFormProps) => {
 
+    const { data: session } = useSession();
     const form = useForm<z.infer<typeof patientBookingSchema>>({
         resolver: zodResolver(patientBookingSchema),
         defaultValues: {
@@ -38,7 +40,9 @@ const PatientBookingForm = ({ services }: PatientBookingFormProps) => {
 
     const onSubmit = async (values: z.infer<typeof patientBookingSchema>) => {
 
-        // if(!values.appointment_datetime) return;
+        if (!session?.accessToken) {
+            toast.error("You must login first.");
+        }
 
         const payload = {
             name: values.name,
@@ -51,9 +55,9 @@ const PatientBookingForm = ({ services }: PatientBookingFormProps) => {
             appointment_time: format(values.appointment_datetime, "HH:mm:ss"),
         }
 
-        console.log(payload);
+        
 
-        const resp = await ApiRequests.post("bookings/patient_bookings/", payload);
+        const resp = await ApiRequests.post("bookings/patient_bookings/", payload, session?.accessToken);
         if(resp.success){
             toast.success(resp.message);
         } else {

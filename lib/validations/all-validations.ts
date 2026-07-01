@@ -11,7 +11,7 @@ export const serviceSchema = z.object({
 
 
 export const reviewSchema = z.object({
-    rating: z.string().min(1, "Please leave a rating"),
+    rating: z.number().min(1, "Please select a rating").max(5),
     comment: z.string().optional(),
 })
 

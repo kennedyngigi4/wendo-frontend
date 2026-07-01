@@ -209,13 +209,13 @@ const MainFooter = () => {
                         <a href="https://www.facebook.com/wendo.health/" target="_blank" rel="noopener noreferrer">
                             <FacebookIcon />
                         </a>
-                        <a href="" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/wendohealth/" target="_blank" rel="noopener noreferrer">
                             <InstagramIcon />
                         </a>
                           <a href="https://www.linkedin.com/company/wendohealth" target="_blank" rel="noopener noreferrer">
                             <LinkedinIcon />
                         </a>
-                        <a href="" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.tiktok.com/@wendohealth" target="_blank" rel="noopener noreferrer">
                             <FontAwesomeIcon icon={faTiktok} size="lg" />
                         </a>
                     </div>

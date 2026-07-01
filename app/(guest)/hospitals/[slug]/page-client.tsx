@@ -508,7 +508,7 @@ const HospitalDetailsPage = ({
                                     </h2>
 
                                     <div>
-                                        <ReviewModalForm />
+                                        <ReviewModalForm providerId={provider.id} providerType="hospital" />
                                     </div>
                                 </div>
 

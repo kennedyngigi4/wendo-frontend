@@ -17,6 +17,7 @@ const page = async ({ params } : Props) => {
         true
     );
 
+
     return (
         <HospitalDetailsPage provider={data} />
     )

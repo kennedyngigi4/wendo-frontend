@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import DOMPurify from "dompurify";
-import { Calendar1Icon, Clock3, MapPinIcon, PhoneCallIcon, ShieldCheck, Star, Stethoscope, Building2, Ambulance, ChevronRight, MessageCircleMoreIcon, ChevronUp, ChevronDown, MapPin, BriefcaseBusinessIcon } from "lucide-react";
+import { Calendar1Icon, Clock3, MapPinIcon, PhoneCallIcon, ShieldCheck, Star, Stethoscope, Building2, Ambulance, ChevronRight, MessageCircleMoreIcon, ChevronUp, ChevronDown, MapPin, BriefcaseBusinessIcon, User2Icon } from "lucide-react";
 import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { ProviderBranchDetailsModel } from "@/lib/models/provider-models";
 import ProviderBanner from "./_components/provider-banner";
@@ -18,6 +18,7 @@ import ReviewModalForm from "@/components/modals/review-modal";
 import { moveItem } from "framer-motion";
 import Link from "next/link";
 import PatientBookingForm from "../../_components/patient-booking-form";
+import { useSession } from "next-auth/react";
 
 interface HospitalDetailsPageProps {
     provider: ProviderBranchDetailsModel;
@@ -27,6 +28,7 @@ const HospitalDetailsPage = ({
     provider,
 }: HospitalDetailsPageProps) => {
 
+    const { data:session } = useSession();
     const [showAllClinics, setShowAllClinics] = useState(false);
 
     return (
@@ -507,9 +509,12 @@ const HospitalDetailsPage = ({
                                         Patient Testimonials
                                     </h2>
 
-                                    <div>
-                                        <ReviewModalForm />
-                                    </div>
+                                    {session?.accessToken && (
+                                        <div>
+                                            <ReviewModalForm providerId={provider.id} providerType="clinic" />
+                                        </div>
+                                    )}
+                                    
                                 </div>
 
                                 {provider?.reviews?.length > 0  ? (
@@ -520,34 +525,27 @@ const HospitalDetailsPage = ({
                                                 className="bg-slate-50 rounded-3xl p-5"
                                             >
                                                 <div className="flex items-center gap-3">
-                                                    <div className="w-12 h-12 rounded-full bg-blue-100" />
+                                                    <div className="w-12 h-12 rounded-full flex justify-center items-center bg-blue-100">
+                                                        <User2Icon className="text-primary" />
+                                                    </div>
 
                                                     <div>
                                                         <h4 className="font-semibold text-secondary">
-                                                            Anonymous Patient
+                                                            {item.created_by}
                                                         </h4>
 
-                                                        <div className="flex gap-1 mt-1 text-yellow-500">
-                                                            <Star
-                                                                size={14}
-                                                                fill="currentColor"
-                                                            />
-                                                            <Star
-                                                                size={14}
-                                                                fill="currentColor"
-                                                            />
-                                                            <Star
-                                                                size={14}
-                                                                fill="currentColor"
-                                                            />
-                                                            <Star
-                                                                size={14}
-                                                                fill="currentColor"
-                                                            />
-                                                            <Star
-                                                                size={14}
-                                                                fill="currentColor"
-                                                            />
+                                                        <div className="flex gap-1 mt-1">
+                                                            {[1, 2, 3, 4, 5].map((star) => (
+                                                                <Star
+                                                                    key={star}
+                                                                    size={14}
+                                                                    className={
+                                                                        star <= item.rating
+                                                                            ? "text-yellow-500 fill-current"
+                                                                            : "text-gray-400"
+                                                                    }
+                                                                />
+                                                            ))}
                                                         </div>
                                                     </div>
                                                 </div>
