@@ -12,8 +12,11 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 
 const MainHeader = () => {
+
+    const { data:session } = useSession();
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -102,14 +105,24 @@ const MainHeader = () => {
                             Contact us
                         </Link>
 
-                        <Link
-                            href="/auth/login"
-                            className="mx-2 flex items-center text-sm hover:text-primary"
-                            aria-label="Login to your account"
-                        >
-                            <User2Icon size={17} className="pe-1" />
-                            Login
-                        </Link>
+                        {session?.accessToken ? (
+                            <Link href={`/dashboard/${session?.user?.role}/`}>
+                                <div className="flex items-center space-x-0.5 text-sm">
+                                    <User2Icon size={13} className="shrink-0" />
+                                    <span className="truncate max-w-32">{session?.user.name}</span>
+                                </div>
+                            </Link>
+                        ) : (
+                            <Link
+                                    href = "/auth/login"
+                                    className = "mx-2 flex items-center text-sm hover:text-primary"
+                                    aria-label="Login to your account"
+                                >
+                                <User2Icon size={17} className="pe-1" />
+                                Login
+                            </Link>
+                        )}
+                        
 
                         <div className="flex">
                             <Link href="/auth/register/patient">
@@ -171,13 +184,23 @@ const MainHeader = () => {
                     {/* RIGHT ACTIONS WHEN SCROLLED */}
                     {scrolled && (
                         <div className="flex items-center gap-4">
-                            <Link
-                                href="/auth/login"
-                                className="flex items-center text-white"
-                            >
-                                <User2Icon size={17} className="pe-1" />
-                                Login
-                            </Link>
+                            {session?.accessToken ? (
+                                <Link href={`/dashboard/${session?.user?.role}/`}>
+                                    <div className="flex items-center space-x-0.5 text-sm text-white">
+                                        <User2Icon size={13} className="shrink-0" />
+                                        <span className="truncate max-w-32">{session?.user.name}</span>
+                                    </div>
+                                </Link>
+                            ) : (
+                                <Link
+                                    href="/auth/login"
+                                    className="mx-2 flex items-center text-sm hover:text-primary"
+                                    aria-label="Login to your account"
+                                >
+                                    <User2Icon size={17} className="pe-1" />
+                                    Login
+                                </Link>
+                            )}
 
                             <div className="flex">
                                 <Link href="/auth/register/patient">
@@ -273,14 +296,23 @@ const MainHeader = () => {
                         Contact Us
                     </Link>
 
-                    <Link
-                        href="/auth/login"
-                        className="flex items-center rounded-xl px-4 py-3 hover:bg-slate-100"
-                        onClick={() => setMobileMenuOpen(false)}
-                    >
-                        <User2Icon size={18} className="me-2" />
-                        Login
-                    </Link>
+                    {session?.accessToken ? (
+                        <Link href={`/dashboard/${session?.user?.role}/`}>
+                            <div className="flex items-center space-x-0.5 text-sm">
+                                <User2Icon size={13} className="shrink-0" />
+                                <span className="truncate max-w-32">{session?.user.name}</span>
+                            </div>
+                        </Link>
+                    ) : (
+                        <Link
+                            href="/auth/login"
+                            className="mx-2 flex items-center text-sm hover:text-primary"
+                            aria-label="Login to your account"
+                        >
+                            <User2Icon size={17} className="pe-1" />
+                            Login
+                        </Link>
+                    )}
 
                     {/* REGISTER BUTTONS */}
                     <div className="mt-4 flex">

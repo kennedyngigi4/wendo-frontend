@@ -1,9 +1,16 @@
 "use client"
 
+import * as React from "react";
 import {
     ColumnDef,
+    Table as TableType,
+    ColumnFiltersState,
+    SortingState,
     flexRender,
     getCoreRowModel,
+    getFilteredRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
     useReactTable,
 } from "@tanstack/react-table"
 
@@ -15,12 +22,14 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import { Button } from "./button"
 
 interface GlobalDataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[]
     data: TData[]
-    searchSection?: React.ReactNode
-    paginationSection?: React.ReactNode
+
+    searchSection?: (table: TableType<TData>) => React.ReactNode
+    paginationSection?: (table: TableType<TData>) => React.ReactNode
 }
 
 export function GlobalDataTable<TData, TValue>({
@@ -29,18 +38,35 @@ export function GlobalDataTable<TData, TValue>({
     searchSection,
     paginationSection
 }: GlobalDataTableProps<TData, TValue>) {
+
+    const [sorting, setSorting] = React.useState<SortingState>([]);
+    const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+        []
+    );
+
     const table = useReactTable({
         data,
         columns,
         getCoreRowModel: getCoreRowModel(),
+        getPaginationRowModel: getPaginationRowModel(),
+        onSortingChange: setSorting,
+        getSortedRowModel: getSortedRowModel(),
+        onColumnFiltersChange: setColumnFilters,
+        getFilteredRowModel: getFilteredRowModel(),
+        state: {
+            sorting,
+            columnFilters,
+        },
     })
 
     return (
         <div>
             
             
-            {/* Search section */}
-            {searchSection}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+                {searchSection?.(table)}
+            </div>
+            
             
             <div className="overflow-hidden rounded-md border">
                 <Table>
@@ -88,7 +114,26 @@ export function GlobalDataTable<TData, TValue>({
             </div>
 
             {/* Pagination */}
-            {paginationSection}
+            <div className="flex items-center justify-end space-x-2 py-4">
+                <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => table.previousPage()}
+                    disabled={!table.getCanPreviousPage()}
+                >
+                    Previous
+                </Button>
+                <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => table.nextPage()}
+                    disabled={!table.getCanNextPage()}
+                >
+                    Next
+                </Button>
+            </div>
+
+
         </div>
     )
 }

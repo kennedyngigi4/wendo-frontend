@@ -4,6 +4,7 @@ import { GlobalDataTable } from '@/components/ui/data-table';
 import { Calendar1Icon } from 'lucide-react';
 import React from 'react'
 import { appointmentColumns } from './_components/appointment-columns';
+import { Input } from '@/components/ui/input';
 
 interface AppointmentsClientPageProps {
   appointments: any[]
@@ -20,7 +21,19 @@ const AppointmentsClientPage = ({ appointments }: AppointmentsClientPageProps) =
 
       {appointments.length > 0 ? (
         <div>
-          <GlobalDataTable data={appointments} columns={appointmentColumns} />
+          <GlobalDataTable 
+            data={appointments} 
+            columns={appointmentColumns} 
+            searchSection={(table) => (
+              <Input
+                placeholder="Search..."
+                value={(table.getColumn("service")?.getFilterValue() as string) ?? ""}
+                onChange={(e) =>
+                  table.getColumn("service")?.setFilterValue(e.target.value)
+                }
+              />
+            )}
+          />
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center bg-slate-50 border-1 border-dotted border-slate-300 py-10 text-center rounded-xl">
