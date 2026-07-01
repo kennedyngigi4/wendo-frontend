@@ -31,3 +31,13 @@ export const resetPasswordSchema = z.object({
 })
 
 
+
+export const profileSchema = z.object({
+    fullname: z.string().optional(),
+    email: z.email().optional(),
+    gender: z.string().optional(),
+    phone: z.string().optional(),
+    dob: z.string().optional(),
+    country: z.string().optional(),
+})
+
