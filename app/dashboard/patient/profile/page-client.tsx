@@ -8,6 +8,7 @@ import {
   Phone,
   ShieldCheck,
   Trash2,
+  Trash2Icon,
 } from "lucide-react";
 
 import { z } from "zod";
@@ -18,6 +19,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { profileSchema } from "@/lib/validations/auth-validations";
 import { SelectItem } from "@/components/ui/select";
+import { toast } from "sonner";
+import { ApiRequests } from "@/lib/requests/api-requests";
+import { signOut, useSession } from "next-auth/react";
+import CustomButton from "@/components/ui/custom-button";
 
 interface ProfileClientPageProps {
   data: any;
@@ -25,11 +30,15 @@ interface ProfileClientPageProps {
 
 const ProfileClientPage = ({ data }: ProfileClientPageProps) => {
 
+  const { data: session } = useSession();
   const fileInputRef = useRef<HTMLInputElement>(null);
-
   const [preview, setPreview] = useState(
     data?.patientprofile?.profile_picture || null
   );
+
+  const [image, setImage] = useState<File | null>(null);
+
+  
 
   const form = useForm<z.infer<typeof profileSchema>>({
     resolver: zodResolver(profileSchema),
@@ -50,9 +59,9 @@ const ProfileClientPage = ({ data }: ProfileClientPageProps) => {
         "fullname": data?.fullname || "",
         "email": data?.email || "",
         "phone": data?.phone || "",
-        "gender": data?.patientprofile?.gender || "",
-        "dob": data?.patientprofile?.dob || "",
-        "country": data?.patientprofile?.country || ""
+        "gender": data?.gender || "",
+        "dob": data?.dob || "",
+        "country": data?.country || ""
       });
     }
   }, [data, form])
@@ -62,7 +71,53 @@ const ProfileClientPage = ({ data }: ProfileClientPageProps) => {
 
     if (!file) return;
 
+    setImage(file);
     setPreview(URL.createObjectURL(file));
+  };
+
+
+  const onSubmit = async (values: z.infer<typeof profileSchema>) => {
+    try {
+      const formData = new FormData();
+
+      Object.entries(values).forEach(([key, value]) => {
+        if (value !== undefined && value !== null) {
+          formData.append(key, value.toString());
+        }
+      });
+
+      if (image) {
+        formData.append("profile_picture", image);
+      }
+
+      const response = await ApiRequests.patch("account/profile", formData, session?.accessToken);
+      console.log(response);
+      if (!response.success) {
+        throw new Error();
+      }
+
+      toast.success("Profile updated successfully.");
+    } catch {
+      toast.error("Unable to update profile.");
+    }
+  };
+
+
+  const handleDelete = async () => {
+    if (!confirm("Delete your account permanently?")) return;
+
+    try {
+      await ApiRequests.delete("account/profile", session?.accessToken);
+
+      toast.success("Account deleted.");
+
+      signOut({
+        callbackUrl: "/",
+      });
+
+    } catch {
+      toast.error("Unable to delete account.");
+    }
   };
 
   return (
@@ -205,7 +260,7 @@ const ProfileClientPage = ({ data }: ProfileClientPageProps) => {
 
           </div>
 
-          <form className="space-y-6">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
 
             <div className="grid gap-5 md:grid-cols-2">
 
@@ -303,13 +358,15 @@ const ProfileClientPage = ({ data }: ProfileClientPageProps) => {
 
           </div>
 
-          <Button
+          <CustomButton
+            label="Delete Account"
+            btnType="button"
             variant="destructive"
             className="gap-2"
-          >
-            <Trash2 size={16} />
-            Delete Account
-          </Button>
+            onClick={handleDelete}
+            prefixIcon={{ type: "lucide", icon: Trash2Icon }}
+          />
+          
 
         </div>
 

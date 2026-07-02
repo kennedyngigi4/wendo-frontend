@@ -188,11 +188,11 @@ const HomePageClient = ({ data }: HomePageClientProps) => {
 
 
 
-      <div className="app-container pb-8">
+      {/* <div className="app-container pb-8">
         <h1 className="text-center text-secondary font-semibold text-2xl pb-3">Trusted Partners</h1>
 
         
-      </div>
+      </div> */}
 
 
       {data?.events.length > 0 && (

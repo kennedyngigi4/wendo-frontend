@@ -92,7 +92,7 @@ const PatientDashboardClient = () => {
             </div>
 
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
+            {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mt-10">
                 <div>
                     <Card>
                         <CardContent>
@@ -117,7 +117,7 @@ const PatientDashboardClient = () => {
                         <h1 className="font-semibold flex items-center space-x-1"><History size={13} /> <span>Recent Activity</span></h1>
                     </CardContent>
                 </Card>
-            </div>
+            </div> */}
 
         </div>
     )

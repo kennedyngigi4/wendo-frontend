@@ -194,7 +194,7 @@ const MainHeader = () => {
                             ) : (
                                 <Link
                                     href="/auth/login"
-                                    className="mx-2 flex items-center text-sm hover:text-primary"
+                                    className="mx-2 flex items-center text-white text-sm hover:text-white"
                                     aria-label="Login to your account"
                                 >
                                     <User2Icon size={17} className="pe-1" />
